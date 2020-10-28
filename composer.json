@@ -1,0 +1,38 @@
+{
+    "name": "laravel-enso/tasks",
+    "description": "Task management dependency for Laravel Enso",
+    "keywords": [
+        "laravel-enso",
+        "tasks",
+        "task-management"
+    ],
+    "homepage": "https://github.com/laravel-enso/tasks",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Adrian Ocneanu",
+        "email": "aocneanu@gmail.com",
+        "homepage": "https://laravel-enso.com",
+        "role": "Developer"
+    }, {
+        "name": "Reza Fouladi",
+        "email": "raftx24@gmail.com",
+        "homepage": "https://laravel-enso.com",
+        "role": "Developer"
+    }],
+    "autoload": {
+        "psr-4": {
+            "LaravelEnso\\Tasks\\": "src/",
+            "LaravelEnso\\Tasks\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelEnso\\Tasks\\AppServiceProvider",
+                "LaravelEnso\\Tasks\\AuthServiceProvider",
+                "LaravelEnso\\Tasks\\EnumServiceProvider"
+            ]
+        }
+    }
+}

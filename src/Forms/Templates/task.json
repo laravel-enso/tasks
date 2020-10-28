@@ -1,0 +1,72 @@
+{
+    "routePrefix": "tasks",
+    "sections": [
+        {
+            "columns": 2,
+            "fields": [
+                {
+                    "label": "Name",
+                    "name": "name",
+                    "value": "",
+                    "meta": {
+                        "type": "input",
+                        "content": "text"
+                    }
+                },
+                {
+                    "label": "Allocated To",
+                    "name": "allocated_to",
+                    "value": [],
+                    "meta": {
+                        "type": "select",
+                        "source": "administration.users.options",
+                        "label": "person.name"
+                    }
+                },
+                {
+                    "label": "Flag",
+                    "name": "flag",
+                    "value": false,
+                    "meta": {
+                        "custom": "flag",
+                        "type": "input",
+                        "content": "text"
+                    }
+                },
+                {
+                    "label": "Reminder",
+                    "name": "reminder",
+                    "value": "",
+                    "meta": {
+                        "type": "datepicker",
+                        "altFormat": "m-d-Y H:i",
+                        "format": "Y-m-d H:i:s",
+                        "time": true
+                    }
+                },
+                {
+                    "label": "Completed",
+                    "name": "completed",
+                    "value": false,
+                    "meta": {
+                        "type": "input",
+                        "content": "checkbox"
+                    }
+                }
+            ]
+        },
+        {
+            "columns": 1,
+            "fields": [
+                {
+                    "label": "Description",
+                    "name": "description",
+                    "value": "",
+                    "meta": {
+                        "type": "textarea"
+                    }
+                }
+            ]
+        }
+    ]
+}
