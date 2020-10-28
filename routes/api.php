@@ -7,7 +7,6 @@ Route::middleware(['api', 'auth', 'core'])
     ->prefix('api/tasks')
     ->as('tasks.')
     ->group(function () {
-        Route::get('', 'Index')->name('index');
         Route::get('create', 'Create')->name('create');
         Route::post('', 'Store')->name('store');
         Route::get('{task}/edit', 'Edit')->name('edit');
