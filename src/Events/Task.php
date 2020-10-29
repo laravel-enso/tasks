@@ -7,29 +7,29 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tasks\Http\Responses\TaskCount;
-use LaravelEnso\Tasks\Models\Task as Model;
 
 class Task implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private Model $task;
+    private User $user;
 
-    public function __construct($task)
+    public function __construct(User $user)
     {
-        $this->task = $task;
+        $this->user = $user;
         $this->queue = 'notifications';
     }
 
     public function broadcastOn()
     {
-        return new PrivateChannel("tasks.{$this->task->allocated_to}");
+        return new PrivateChannel("tasks.{$this->user->id}");
     }
 
     public function broadcastWith()
     {
-        return (new TaskCount($this->task->allocatedTo))->toResponse();
+        return (new TaskCount($this->user))->toResponse();
     }
 
     public function broadcastAs()
