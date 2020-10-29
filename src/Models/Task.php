@@ -39,6 +39,11 @@ class Task extends Model
             ->where('reminder', '<=', Carbon::now());
     }
 
+    public function scopePending($query)
+    {
+        return $query->whereCompleted(false);
+    }
+
     public function setReminderAttribute($dateTime)
     {
         if (Carbon::now()->lessThan($dateTime)) {

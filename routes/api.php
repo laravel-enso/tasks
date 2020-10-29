@@ -18,4 +18,7 @@ Route::middleware(['api', 'auth', 'core'])
         Route::get('initTable', 'InitTable')->name('initTable');
         Route::get('tableData', 'TableData')->name('tableData');
         Route::get('exportExcel', 'ExportExcel')->name('exportExcel');
+
+        Route::get('count', 'Count')->name('count');
+        Route::get('', 'Index')->name('index');
     });
