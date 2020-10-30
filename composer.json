@@ -32,7 +32,6 @@
                 "LaravelEnso\\Tasks\\AppServiceProvider",
                 "LaravelEnso\\Tasks\\AuthServiceProvider",
                 "LaravelEnso\\Tasks\\BroadcastServiceProvider",
-                "LaravelEnso\\Tasks\\CalendarServiceProvider",
                 "LaravelEnso\\Tasks\\EnumServiceProvider"
             ]
         }
