@@ -21,10 +21,11 @@ class Task
 
     private function dispatch($task)
     {
-        EventFacade::dispatch(new Event($task->allocatedTo));
+        EventFacade::dispatch(new Event($task->allocated_to));
 
-        if ($task->getOriginal('allocated_to') !== $task->allocated_to) {
-            EventFacade::dispatch(new Event(User::find($task->getOriginal('allocated_to'))));
+        if ($task->getOriginal('allocated_to')
+            && $task->getOriginal('allocated_to') !== $task->allocated_to) {
+            EventFacade::dispatch(new Event($task->getOriginal('allocated_to')));
         }
     }
 }

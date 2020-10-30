@@ -14,22 +14,22 @@ class Task implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private User $user;
+    private int $userId;
 
-    public function __construct(User $user)
+    public function __construct(int $userId)
     {
-        $this->user = $user;
+        $this->userId = $userId;
         $this->queue = 'notifications';
     }
 
     public function broadcastOn()
     {
-        return new PrivateChannel("tasks.{$this->user->id}");
+        return new PrivateChannel("tasks.{$this->userId}");
     }
 
     public function broadcastWith()
     {
-        return (new TaskCount($this->user))->toResponse();
+        return (new TaskCount(User::find($this->userId)))->toResponse();
     }
 
     public function broadcastAs()

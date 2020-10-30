@@ -5,6 +5,7 @@ namespace LaravelEnso\Tasks\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tables\Traits\TableCache;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
@@ -37,6 +38,17 @@ class Task extends Model
     {
         return $query->whereCompleted(false)
             ->where('reminder', '<=', Carbon::now());
+    }
+
+    public function scopeAllowed($query)
+    {
+        return $query->when(
+            ! Auth::user()->isAdmin() && ! Auth::user()->isSupervisor(),
+            fn ($query) => $query->where(fn ($query) => $query
+                ->whereCreatedBy(Auth::user()->id)
+                ->orWhere('allocated_to', Auth::user()->id)
+            )
+        );
     }
 
     public function scopePending($query)
