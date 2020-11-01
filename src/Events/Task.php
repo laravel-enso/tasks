@@ -34,6 +34,6 @@ class Task implements ShouldBroadcast
 
     public function broadcastAs()
     {
-        return 'tasks-changed';
+        return 'updated';
     }
 }
