@@ -2,13 +2,13 @@
 
 namespace LaravelEnso\Tasks\Tables\Builders;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Helpers\Services\Obj;
 use LaravelEnso\Tables\Contracts\ConditionalActions;
 use LaravelEnso\Tables\Contracts\CustomFilter;
-use LaravelEnso\Tasks\Models\Task;
-use Illuminate\Database\Eloquent\Builder;
 use LaravelEnso\Tables\Contracts\Table;
+use LaravelEnso\Tasks\Models\Task;
 
 class TaskTable implements Table, CustomFilter, ConditionalActions
 {
@@ -16,14 +16,14 @@ class TaskTable implements Table, CustomFilter, ConditionalActions
 
     public function query(): Builder
     {
-        return Task::with(
-            'createdBy.avatar', 'createdBy.person',
-            'allocatedTo.avatar', 'allocatedTo.person',
-        )->selectRaw('
-            tasks.id, tasks.name, tasks.description, tasks.flag, tasks.completed, tasks.allocated_to,
-            tasks.reminder, IF(completed, 0, reminder < CURRENT_DATE()) as overdue,
-            created_by, created_at
-        ')->allowed();
+        return Task::visible()
+            ->with('createdBy.avatar', 'createdBy.person')
+            ->with('allocatedTo.avatar', 'allocatedTo.person')
+            ->selectRaw('
+                tasks.id, tasks.name, tasks.description, tasks.flag, tasks.completed,
+                tasks.allocated_to, tasks.reminder, tasks.reminder as rawReminder,
+                created_by, created_at, IF(completed, 0, reminder < CURRENT_TIME()) as overdue
+            ');
     }
 
     public function templatePath(): string
@@ -46,6 +46,6 @@ class TaskTable implements Table, CustomFilter, ConditionalActions
         $isSuperior = Auth::user()->isAdmin() || Auth::user()->isSupervisor();
 
         return $isSuperior
-            || ($row['createdBy']['id'] ?? null) === Auth::user()->id;
+            || $row['createdBy']['id'] === Auth::user()->id;
     }
 }

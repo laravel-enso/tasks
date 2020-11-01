@@ -8,89 +8,88 @@
         "edit",
         "destroy"
     ],
-    "columns": [
-        {
-            "label": "Name",
-            "name": "name",
-            "data": "tasks.name",
-            "meta": [
-                "slot",
-                "searchable"
-            ]
-        },
-        {
-            "label": "Completed",
-            "name": "completed",
-            "data": "tasks.completed",
-            "meta": [
-                "sortable",
-                "slot"
-            ]
-        },
-        {
-            "label": "Flag",
-            "name": "flag",
-            "data": "tasks.flag",
-            "meta": [
-                "sortable",
-                "slot"
-            ],
-            "enum": "LaravelEnso\\Tasks\\Enums\\Flags"
-        },
-        {
-            "label": "Reminder",
-            "name": "reminder",
-            "data": "tasks.reminder",
-            "meta": [
-                "sortable",
-                "slot",
-                "date"
-            ]
-        },
-        {
-            "label": "Allocated To",
-            "name": "allocatedTo",
-            "data": "tasks.allocatedTo",
-            "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
-            "meta": [
-                "slot",
-                "notExportable"
-            ]
-        },
-        {
-            "label": "Created At",
-            "name": "created_at",
-            "data": "tasks.created_at",
-            "meta": [
-                "sortable",
-                "date"
-            ]
-        },
-        {
-            "label": "By",
-            "name": "createdBy",
-            "data": "tasks.createdBy",
-            "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
-            "meta": [
-                "slot",
-                "notExportable"
-            ]
-        },
-        {
-            "label": "Allocated To",
-            "name": "allocatedTo.person.name",
-            "data": "tasks.allocatedTo.person",
-            "meta": [
-                "rogue"
-            ]
-        },
-        {
-            "label": "Creator",
-            "name": "createdBy.person.name",
-            "data": "tasks.createdBy.person",
-            "meta": [
-                "rogue"
-            ]
-        }
-    ]
+    "strip": ["allocated_to", "created_by"],
+    "columns": [{
+        "label": "Name",
+        "name": "name",
+        "data": "tasks.name",
+        "meta": [
+            "slot",
+            "searchable"
+        ]
+    }, {
+        "label": "Flag",
+        "name": "flag",
+        "data": "tasks.flag",
+        "meta": [
+            "sortable",
+            "slot"
+        ],
+        "enum": "LaravelEnso\\Tasks\\Enums\\Flags"
+    }, {
+        "label": "Reminder",
+        "name": "reminder",
+        "data": "tasks.reminder",
+        "meta": [
+            "sortable",
+            "slot",
+            "datetime"
+        ]
+    }, {
+        "label": "Allocated To",
+        "name": "allocatedTo",
+        "data": "tasks.allocatedTo",
+        "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
+        "meta": [
+            "slot",
+            "notExportable"
+        ]
+    }, {
+        "label": "Completed",
+        "name": "completed",
+        "data": "tasks.completed",
+        "meta": [
+            "sortable",
+            "slot"
+        ]
+    }, {
+        "label": "Created At",
+        "name": "created_at",
+        "data": "tasks.created_at",
+        "meta": [
+            "sortable",
+            "date"
+        ]
+    }, {
+        "label": "By",
+        "name": "createdBy",
+        "data": "tasks.createdBy",
+        "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
+        "meta": [
+            "slot",
+            "notExportable"
+        ]
+    }, {
+        "label": "Raw Reminder",
+        "name": "rawReminder",
+        "data": "tasks.reminder",
+        "meta": [
+            "rogue",
+            "notExportable"
+        ]
+    }, {
+        "label": "Allocated",
+        "name": "allocatedTo.person.name",
+        "data": "tasks.allocatedTo.person",
+        "meta": [
+            "rogue"
+        ]
+    }, {
+        "label": "Creator",
+        "name": "createdBy.person.name",
+        "data": "tasks.createdBy.person",
+        "meta": [
+            "rogue"
+        ]
+    }]
 }

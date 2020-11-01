@@ -4,8 +4,6 @@ namespace LaravelEnso\Tasks\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tasks\Enums\Flags;
 use LaravelEnso\Tasks\Models\Task;
 
@@ -20,11 +18,11 @@ class ValidateTaskRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'completed' => 'required|boolean',
+            'description' => 'filled',
             'flag' => 'nullable|in:'.Flags::keys()->implode(','),
-            'allocated_to' => 'required|exists:users,id',
             'reminder' => 'nullable|date',
-            'description' => 'required',
+            'allocated_to' => 'required|exists:users,id',
+            'completed' => 'required|boolean',
         ];
     }
 
@@ -49,11 +47,10 @@ class ValidateTaskRequest extends FormRequest
 
     private function invalidReminder(): bool
     {
-        $reminderChangedOrNew = ! $this->task()
-            || ! $this->task()->reminder
+        $changed = ! optional($this->task())->reminder
             || $this->task()->reminder->notEqualTo($this->get('reminder'));
 
-        return $reminderChangedOrNew
+        return $changed
             && Carbon::now()->greaterThan($this->get('reminder'));
     }
 }

@@ -20,9 +20,7 @@ class Task extends Model
 
     protected $dates = ['reminder', 'reminded_at'];
 
-    protected $casts = [
-        'completed' => 'boolean',
-    ];
+    protected $casts = ['completed' => 'boolean'];
 
     public function allocatedTo(): Relation
     {
@@ -36,19 +34,18 @@ class Task extends Model
 
     public function scopeOverdue($query)
     {
-        return $query->whereCompleted(false)
+        return $query->pending()
             ->where('reminder', '<=', Carbon::now());
     }
 
-    public function scopeAllowed($query)
+    public function scopeVisible($query)
     {
-        return $query->when(
-            ! Auth::user()->isAdmin() && ! Auth::user()->isSupervisor(),
-            fn ($query) => $query->where(fn ($query) => $query
-                ->whereCreatedBy(Auth::user()->id)
-                ->orWhere('allocated_to', Auth::user()->id)
-            )
-        );
+        $user = Auth::user();
+        $superiorUser = $user->isAdmin() || $user->isSupervisor();
+
+        return $query->when(! $superiorUser, fn ($query) => $query
+            ->where(fn ($query) => $query->whereCreatedBy($user->id)
+                ->orWhere('allocated_to', $user->id)));
     }
 
     public function scopePending($query)
@@ -67,7 +64,9 @@ class Task extends Model
 
     public function remind()
     {
-        $this->allocatedTo->notify(new TaskNotification($this));
+        $this->allocatedTo->notify(
+            (new TaskNotification($this))->onQueue('notifications')
+        );
 
         $this->update(['reminded_at' => Carbon::now()]);
     }

@@ -10,10 +10,14 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('name');
             $table->text('description');
+
             $table->tinyInteger('flag')->nullable()->index();
+
             $table->boolean('completed')->index();
+
             $table->dateTime('reminder')->nullable();
 
             $table->unsignedInteger('allocated_to')->nullable()->index();

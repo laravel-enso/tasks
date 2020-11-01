@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use LaravelEnso\Core\Models\User;
 use LaravelEnso\DynamicMethods\Services\Methods;
 use LaravelEnso\Tasks\Commands\SendTaskReminders;
-use LaravelEnso\Tasks\DynamicRelations\AllocatedTasks;
+use LaravelEnso\Tasks\DynamicRelations\Tasks;
 use LaravelEnso\Tasks\Models\Task as Model;
 use LaravelEnso\Tasks\Observers\Task as Observer;
 
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function load(): self
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         return $this;
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     private function publish(): self
     {
         $this->publishes([
-            __DIR__ . '/../config' => config_path('laravel-enso'),
+            __DIR__.'/../config' => config_path('laravel-enso'),
         ], 'tasks-config');
 
         $this->publishes([
@@ -42,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
 
         return $this;
     }
-
 
     private function command(): self
     {
@@ -56,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function relations(): self
     {
-        Methods::bind(User::class, [AllocatedTasks::class]);
+        Methods::bind(User::class, [Tasks::class]);
 
         return $this;
     }

@@ -11,7 +11,7 @@ class Index extends Controller
     public function __invoke(Request $request)
     {
         return Task::collection(
-            $request->user()->allocatedTasks()
+            $request->user()->tasks()
                 ->skip($request->get('offset'))
                 ->take($request->get('paginate'))
                 ->pending()

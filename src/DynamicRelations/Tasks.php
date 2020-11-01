@@ -6,16 +6,15 @@ use Closure;
 use LaravelEnso\DynamicMethods\Contracts\Method;
 use LaravelEnso\Tasks\Models\Task;
 
-class AllocatedTasks implements Method
+class Tasks implements Method
 {
     public function name(): string
     {
-        return 'allocatedTasks';
+        return 'tasks';
     }
 
     public function closure(): Closure
     {
-        return fn () => $this->hasMany(Task::class, 'allocated_to')
-            ->whereCompleted(false);
+        return fn () => $this->hasMany(Task::class, 'allocated_to');
     }
 }

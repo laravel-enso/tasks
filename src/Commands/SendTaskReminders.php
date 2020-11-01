@@ -14,7 +14,8 @@ class SendTaskReminders extends Command
     public function handle()
     {
         Task::with('allocatedTo')
-            ->notReminded()->overdue()
+            ->notReminded()
+            ->overdue()
             ->get()->each->remind();
     }
 }

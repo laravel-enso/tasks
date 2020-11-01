@@ -14,11 +14,16 @@ class TaskCount implements Responsable
         $this->user = $user;
     }
 
-    public function toResponse($request = null)
+    public function toResponse($request)
+    {
+        return $this->data();
+    }
+
+    public function data()
     {
         return [
-            'overdueCount' => $this->user->allocatedTasks()->overdue()->count(),
-            'pendingCount' => $this->user->allocatedTasks()->pending()->count(),
+            'overdueCount' => $this->user->tasks()->overdue()->count(),
+            'pendingCount' => $this->user->tasks()->pending()->count(),
         ];
     }
 }

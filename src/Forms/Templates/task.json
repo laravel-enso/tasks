@@ -10,16 +10,7 @@
                 "type": "input",
                 "content": "text"
             }
-        },{
-            "label": "Allocated To",
-            "name": "allocated_to",
-            "value": null,
-            "meta": {
-                "type": "select",
-                "source": "administration.users.options",
-                "label": "person.name"
-            }
-        },{
+        }, {
             "label": "Flag",
             "name": "flag",
             "value": null,
@@ -28,7 +19,19 @@
                 "type": "input",
                 "content": "text"
             }
-        },{
+        }]
+    }, {
+        "columns": 3,
+        "fields": [{
+            "label": "Allocated To",
+            "name": "allocated_to",
+            "value": [],
+            "meta": {
+                "type": "select",
+                "source": "administration.users.options",
+                "label": "person.name"
+            }
+        }, {
             "label": "Reminder",
             "name": "reminder",
             "value": "",
@@ -38,7 +41,7 @@
                 "format": "Y-m-d H:i:s",
                 "time": true
             }
-        },{
+        }, {
             "label": "Completed",
             "name": "completed",
             "value": false,

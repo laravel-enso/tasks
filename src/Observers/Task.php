@@ -3,7 +3,6 @@
 namespace LaravelEnso\Tasks\Observers;
 
 use Illuminate\Support\Facades\Event as EventFacade;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tasks\Events\Task as Event;
 use LaravelEnso\Tasks\Models\Task as Model;
 
@@ -19,12 +18,11 @@ class Task
         $this->dispatch($task);
     }
 
-    private function dispatch($task)
+    private function dispatch(Model $task)
     {
         EventFacade::dispatch(new Event($task->allocated_to));
 
-        if ($task->getOriginal('allocated_to')
-            && $task->getOriginal('allocated_to') !== $task->allocated_to) {
+        if (! $task->wasRecentlyCreated && $task->isDirty('allocated_to')) {
             EventFacade::dispatch(new Event($task->getOriginal('allocated_to')));
         }
     }

@@ -29,7 +29,7 @@ class Task implements ShouldBroadcast
 
     public function broadcastWith()
     {
-        return (new TaskCount(User::find($this->userId)))->toResponse();
+        return (new TaskCount(User::find($this->userId)))->data();
     }
 
     public function broadcastAs()

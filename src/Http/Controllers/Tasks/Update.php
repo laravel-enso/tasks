@@ -2,12 +2,10 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\Tasks;
 
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Auth;
-use LaravelEnso\Tasks\Models\Task;
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Http\Requests\ValidateTaskRequest;
+use LaravelEnso\Tasks\Models\Task;
 
 class Update extends Controller
 {
@@ -17,11 +15,13 @@ class Update extends Controller
     {
         $this->authorize('handle', $task);
 
-        throw_if($task->allocated_to !== $request->get('allocated_to')
-            && ! Auth::user()->isAdmin()
-            && ! Auth::user()->isSupervisor(), AuthorizationException::class);
+        $task->fill($request->validated());
 
-        $task->update($request->validated());
+        if ($task->isDirty('allocated_to')) {
+            $this->authorize('allocate', $task);
+        }
+
+        $task->save();
 
         return ['message' => __('The task was successfully updated')];
     }

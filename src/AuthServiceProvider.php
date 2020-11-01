@@ -4,12 +4,12 @@ namespace LaravelEnso\Tasks;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use LaravelEnso\Tasks\Models\Task;
-use LaravelEnso\Tasks\Policies\TaskPolicy;
+use LaravelEnso\Tasks\Policies\Task as Policy;
 
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        Task::class => TaskPolicy::class
+        Task::class => Policy::class,
     ];
 
     public function boot()

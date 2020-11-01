@@ -37,7 +37,7 @@ class TaskCalendar implements CustomCalendar
 
     public function events(Carbon $startDate, Carbon $endDate): Collection
     {
-        return Task::allowed()
+        return Task::visible()
             ->whereBetween('reminder', [$startDate, $endDate])->get()
             ->map(fn ($task) => new TaskEvent($task));
     }

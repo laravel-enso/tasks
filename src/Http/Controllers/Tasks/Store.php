@@ -2,9 +2,9 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\Tasks;
 
-use LaravelEnso\Tasks\Models\Task;
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Http\Requests\ValidateTaskRequest;
+use LaravelEnso\Tasks\Models\Task;
 
 class Store extends Controller
 {
