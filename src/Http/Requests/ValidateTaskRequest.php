@@ -17,26 +17,35 @@ class ValidateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'name' => "{$this->requiredOrFilled()}|string",
             'description' => 'filled',
             'flag' => 'nullable|in:'.Flags::keys()->implode(','),
             'reminder' => 'nullable|date',
-            'allocated_to' => 'required|exists:users,id',
-            'completed' => 'required|boolean',
+            'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
+            'completed' => "{$this->requiredOrFilled()}|boolean",
         ];
     }
 
     public function withValidator($validator)
     {
         if ($this->filled('reminder')) {
-            $validator->after(fn ($validator) => $this->validateReminder($validator));
+            $validator->after(fn ($validator) => $this
+                ->validateReminder($validator));
         }
+    }
+
+    private function requiredOrFilled()
+    {
+        return $this->method() === 'POST'
+            ? 'required'
+            : 'filled';
     }
 
     private function validateReminder($validator)
     {
         if ($this->invalidReminder()) {
-            $validator->errors()->add('reminder', 'The reminder must be a date after now.');
+            $validator->errors()
+                ->add('reminder', 'The reminder must be a date after now.');
         }
     }
 
