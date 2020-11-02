@@ -30,6 +30,7 @@
         "label": "Reminder",
         "name": "reminder",
         "data": "tasks.reminder",
+        "dateFormat": "Y-m-d H:i:s",
         "meta": [
             "sortable",
             "slot",
