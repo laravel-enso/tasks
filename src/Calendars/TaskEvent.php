@@ -5,10 +5,12 @@ namespace LaravelEnso\Tasks\Calendars;
 use Carbon\Carbon;
 use LaravelEnso\Calendar\Contracts\Calendar;
 use LaravelEnso\Calendar\Contracts\ProvidesEvent;
+use LaravelEnso\Calendar\Contracts\Routable;
+use LaravelEnso\Calendar\DTOs\Route;
 use LaravelEnso\Calendar\Enums\Frequencies;
 use LaravelEnso\Tasks\Models\Task;
 
-class TaskEvent implements ProvidesEvent
+class TaskEvent implements ProvidesEvent, Routable
 {
     private Task $task;
 
@@ -70,5 +72,10 @@ class TaskEvent implements ProvidesEvent
     public function readonly(): bool
     {
         return true;
+    }
+
+    public function route(): Route
+    {
+        return new Route('tasks.edit', ['task' => $this->task->id]);
     }
 }
