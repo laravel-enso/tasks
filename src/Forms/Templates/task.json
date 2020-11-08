@@ -27,6 +27,7 @@
             "name": "allocated_to",
             "value": [],
             "meta": {
+                "custom": true,
                 "type": "select",
                 "source": "administration.users.options",
                 "label": "person.name"
