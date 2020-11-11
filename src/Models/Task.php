@@ -3,6 +3,7 @@
 namespace LaravelEnso\Tasks\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ use LaravelEnso\TrackWho\Traits\UpdatedBy;
 
 class Task extends Model
 {
-    use TableCache, CreatedBy, UpdatedBy;
+    use TableCache, HasFactory, CreatedBy, UpdatedBy;
 
     protected $guarded = ['id'];
 

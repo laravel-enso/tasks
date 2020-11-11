@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\Tasks\Tables\Builders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Helpers\Services\Obj;
@@ -19,11 +20,14 @@ class TaskTable implements Table, CustomFilter, ConditionalActions
         return Task::visible()
             ->with('createdBy.avatar', 'createdBy.person')
             ->with('allocatedTo.avatar', 'allocatedTo.person')
-            ->selectRaw('
+            ->selectRaw("
                 tasks.id, tasks.name, tasks.description, tasks.flag, tasks.completed,
                 tasks.allocated_to, tasks.reminder, tasks.reminder as rawReminder,
-                created_by, created_at, IF(completed, 0, reminder < CURRENT_TIME()) as overdue
-            ');
+                created_by, created_at,
+                CASE WHEN completed THEN false
+                    ELSE reminder < '".Carbon::now()."'
+                END as overdue
+            ");
     }
 
     public function templatePath(): string
