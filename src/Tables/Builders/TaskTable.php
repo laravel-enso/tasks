@@ -17,16 +17,16 @@ class TaskTable implements Table, CustomFilter, ConditionalActions
 
     public function query(): Builder
     {
+        $now = Carbon::now();
+        $overdue = "completed = 0 and reminder >= {$now}";
+
         return Task::visible()
             ->with('createdBy.avatar', 'createdBy.person')
             ->with('allocatedTo.avatar', 'allocatedTo.person')
             ->selectRaw("
                 tasks.id, tasks.name, tasks.description, tasks.flag, tasks.completed,
                 tasks.allocated_to, tasks.reminder, tasks.reminder as rawReminder,
-                created_by, created_at,
-                CASE WHEN completed THEN false
-                    ELSE reminder < '".Carbon::now()."'
-                END as overdue
+                created_by, created_at, {$overdue} as overdue
             ");
     }
 
