@@ -18,7 +18,7 @@ class TaskTable implements Table, CustomFilter, ConditionalActions
     public function query(): Builder
     {
         $now = Carbon::now();
-        $overdue = "completed = 0 and reminder >= {$now}";
+        $overdue = "completed = true and reminder >= '{$now}'";
 
         return Task::visible()
             ->with('createdBy.avatar', 'createdBy.person')
