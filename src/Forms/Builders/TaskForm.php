@@ -15,14 +15,15 @@ class TaskForm
     public function __construct()
     {
         $this->form = (new Form(static::TemplatePath))
-            ->value('allocated_to', Auth::id())
             ->when($this->cantAllocate(), fn ($form) => $form
                 ->readonly('allocated_to'));
     }
 
     public function create()
     {
-        return $this->form->hide('completed')->create();
+        return $this->form->hide('completed')
+            ->value('allocated_to', Auth::id())
+            ->create();
     }
 
     public function edit(Task $task)
