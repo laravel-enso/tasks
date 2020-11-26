@@ -15,6 +15,7 @@ class CreateStructureForTasks extends Migration
         ['name' => 'tasks.tableData', 'description' => 'Get table data for tasks', 'is_default' => false],
         ['name' => 'tasks.exportExcel', 'description' => 'Export excel for tasks', 'is_default' => false],
         ['name' => 'tasks.count', 'description' => 'Get number of pending tasks', 'is_default' => false],
+        ['name' => 'tasks.users', 'description' => 'Get user options for task allocation', 'is_default' => false],
     ];
 
     protected array $menu = [

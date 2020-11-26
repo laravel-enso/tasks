@@ -22,10 +22,18 @@ class AppServiceProvider extends ServiceProvider
             ->observers();
     }
 
+    public function register()
+    {
+        //
+    }
+
     private function load(): self
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        $this->mergeConfigFrom(__DIR__.'/../config/tasks.php', 'enso.tasks');
 
         return $this;
     }
@@ -33,8 +41,8 @@ class AppServiceProvider extends ServiceProvider
     private function publish(): self
     {
         $this->publishes([
-            __DIR__.'/../config' => config_path('laravel-enso'),
-        ], 'tasks-config');
+            __DIR__.'/../config' => config_path('enso'),
+        ], ['enso-config', 'tasks-config']);
 
         $this->publishes([
             __DIR__.'/../client/src/js' => base_path('client/src/js'),
@@ -53,20 +61,15 @@ class AppServiceProvider extends ServiceProvider
         return $this;
     }
 
-    public function relations(): self
+    private function relations(): self
     {
         Methods::bind(User::class, [Tasks::class]);
 
         return $this;
     }
 
-    public function observers()
+    private function observers()
     {
         Model::observe(Observer::class);
-    }
-
-    public function register()
-    {
-        //
     }
 }
