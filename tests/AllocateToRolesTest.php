@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Config;
 use LaravelEnso\Core\Models\User;
 use Tests\TestCase;
 
-class AllocatedToTest extends TestCase
+class AllocateToRolesTest extends TestCase
 {
     use RefreshDatabase;
 
