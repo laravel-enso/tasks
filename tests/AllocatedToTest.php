@@ -25,4 +25,12 @@ class AllocatedToTest extends TestCase
 
         $this->get(route('tasks.users'))->assertJson([]);
     }
+
+    /** @test */
+    public function can_select_all_roles()
+    {
+        Config::set('enso.tasks.allocatedTo.roles', ['*']);
+
+        $this->get(route('tasks.users'))->assertJsonCount(User::count());
+    }
 }
