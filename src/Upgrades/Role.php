@@ -10,9 +10,8 @@ class Role implements MigratesStructure
 {
     use StructureMigration;
 
-
     protected $permissions = [
-        ['name' => 'tasks.allocatedTo.options', 'description' => 'Get user options for select', 'is_default' => false],
+        ['name' => 'tasks.users', 'description' => 'Get user options for task allocation', 'is_default' => false],
     ];
 
     protected $roles;

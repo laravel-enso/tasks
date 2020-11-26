@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelEnso\Tasks\Http\Controllers\Tasks\Users;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Count;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Create;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Destroy;
@@ -8,7 +9,6 @@ use LaravelEnso\Tasks\Http\Controllers\Tasks\Edit;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\ExportExcel;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Index;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\InitTable;
-use LaravelEnso\Tasks\Http\Controllers\Tasks\AllocatedTo\Options;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Store;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\TableData;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Update;
@@ -32,5 +32,5 @@ Route::middleware(['api', 'auth', 'core'])
         Route::get('count', Count::class)->name('count');
         Route::get('', Index::class)->name('index');
 
-        Route::get('allocatedTo/options', Options::class)->name('allocatedTo.options');
+        Route::get('users', Users::class)->name('users');
     });

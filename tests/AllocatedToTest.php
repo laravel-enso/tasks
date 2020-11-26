@@ -23,6 +23,6 @@ class AllocatedToTest extends TestCase
     {
         Config::set('enso.tasks.allocatedTo.roles', []);
 
-        $this->get(route('tasks.allocatedTo.options'))->assertJson([]);
+        $this->get(route('tasks.users'))->assertJson([]);
     }
 }

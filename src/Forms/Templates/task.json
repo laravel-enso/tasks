@@ -29,7 +29,7 @@
             "meta": {
                 "custom": true,
                 "type": "select",
-                "source": "tasks.allocatedTo.options",
+                "source": "tasks.users",
                 "label": "person.name"
             }
         }, {

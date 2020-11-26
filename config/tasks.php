@@ -7,8 +7,8 @@ return [
         | Roles
         |--------------------------------------------------------------------------
         | which roles can choose for allocated users
-        | Values: null -> all roles,  [ roles ] -> selected roles
+        | Values: ['*'] -> all roles,  [ roles ] -> selected roles
         */
-        'roles' => null,
+        'roles' => ['*'],
     ]
 ];
