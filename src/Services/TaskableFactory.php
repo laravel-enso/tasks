@@ -5,7 +5,7 @@ namespace LaravelEnso\Tasks\Services;
 use LaravelEnso\Tasks\Contracts\Taskable;
 use LaravelEnso\Tasks\Models\Task;
 
-class TaskFactory
+class TaskableFactory
 {
     public function create(Taskable $taskable): Task
     {

@@ -59,13 +59,6 @@ class Task extends Model
         return $query->whereCompleted(true);
     }
 
-    public function scopeSetDone($query)
-    {
-        return $query->update([
-            'completed' => true,
-        ]);
-    }
-
     public function setReminderAttribute($dateTime)
     {
         if (Carbon::now()->lessThan($dateTime)) {
