@@ -42,7 +42,7 @@ class TaskNotification extends Notification implements ShouldQueue
             ->line(__(':name: :description', [
                 'name' => $this->task->name,
                 'description' => $this->task->description,
-            ]))->action(__('View Task'), route('tasks.edit', [$this->task->id]));
+            ]))->action(__('View Task'), "/tasks/{$this->task->id}/edit");
     }
 
     public function toArray()
