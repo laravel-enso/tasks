@@ -19,9 +19,8 @@ class CreateStructureForTasks extends Migration
     ];
 
     protected array $menu = [
-        'name' => 'Tasks', 'icon' => 'tasks', 'route' => 'tasks.index', 'order_index' => 100, 'has_children' => false
+        'name' => 'Tasks', 'icon' => 'tasks', 'route' => 'tasks.index', 'order_index' => 207, 'has_children' => false,
     ];
 
     protected ?string $parentMenu = '';
 }
-
