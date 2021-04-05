@@ -70,9 +70,8 @@ class Task extends Model
 
     public function remind()
     {
-        $this->allocatedTo->notify(
-            (new TaskNotification($this))->onQueue('notifications')
-        );
+        $this->allocatedTo->notify((new TaskNotification($this))
+            ->onQueue('notifications'));
 
         $this->update(['reminded_at' => Carbon::now()]);
     }
