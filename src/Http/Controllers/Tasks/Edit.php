@@ -3,9 +3,9 @@
 namespace LaravelEnso\Tasks\Http\Controllers\Tasks;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use LaravelEnso\Tasks\Models\Task;
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Forms\Builders\TaskForm;
+use LaravelEnso\Tasks\Models\Task;
 
 class Edit extends Controller
 {

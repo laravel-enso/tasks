@@ -22,7 +22,7 @@ class Role implements MigratesStructure
             ->whereName('administration.users.options')
             ->first()
             ->roles
-            ->map(fn($role) => $role->name)
+            ->map(fn ($role) => $role->name)
             ->toArray();
     }
 }

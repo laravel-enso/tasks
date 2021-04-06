@@ -11,7 +11,7 @@ class WebsocketServiceProvider extends CoreServiceProvider
     public function boot()
     {
         Websockets::register([
-            'task' => fn (User $user) => 'tasks.'.$user->id
+            'task' => fn (User $user) => 'tasks.'.$user->id,
         ]);
     }
 }
