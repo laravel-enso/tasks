@@ -36,8 +36,10 @@ class TaskNotification extends Notification implements ShouldQueue
 
     public function toMail()
     {
+        $app = Config::get('app.name');
+
         return (new MailMessage())
-            ->subject(__(Config::get('app.name')).': '.__('Task Reminder'))
+            ->subject("[ {$app} ] {$this->subject()}")
             ->line(__('This is a reminder for the following task:'))
             ->line(__(':name: :description', [
                 'name' => $this->task->name,
@@ -52,5 +54,10 @@ class TaskNotification extends Notification implements ShouldQueue
             'icon' => 'bell',
             'path' => "/tasks/{$this->task->id}/edit",
         ];
+    }
+
+    private function subject(): string
+    {
+        return __('Task Reminder');
     }
 }
