@@ -40,7 +40,7 @@
         "label": "Allocated To",
         "name": "allocatedTo",
         "data": "tasks.allocatedTo",
-        "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
+        "resource": "LaravelEnso\\Users\\Http\\Resources\\User",
         "meta": [
             "slot",
             "notExportable"
@@ -65,7 +65,7 @@
         "label": "By",
         "name": "createdBy",
         "data": "tasks.createdBy",
-        "resource": "LaravelEnso\\Core\\Http\\Resources\\User",
+        "resource": "LaravelEnso\\Users\\Http\\Resources\\User",
         "meta": [
             "slot",
             "notExportable"
