@@ -4,9 +4,9 @@ namespace LaravelEnso\Tasks\Database\Factories;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tasks\Enums\Flags;
 use LaravelEnso\Tasks\Models\Task;
+use LaravelEnso\Users\Models\User;
 
 class TaskFactory extends Factory
 {

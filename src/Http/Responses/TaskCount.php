@@ -3,7 +3,7 @@
 namespace LaravelEnso\Tasks\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
-use LaravelEnso\Core\Models\User;
+use LaravelEnso\Users\Models\User;
 
 class TaskCount implements Responsable
 {

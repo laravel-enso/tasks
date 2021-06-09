@@ -3,7 +3,7 @@
 namespace LaravelEnso\Tasks\Contracts;
 
 use Carbon\Carbon;
-use LaravelEnso\Core\Models\User;
+use LaravelEnso\Users\Models\User;
 
 interface Taskable
 {

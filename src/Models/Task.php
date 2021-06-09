@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tables\Traits\TableCache;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
+use LaravelEnso\Users\Models\User;
 
 class Task extends Model
 {
@@ -79,6 +79,6 @@ class Task extends Model
     public function overdue(): bool
     {
         return ! $this->completed
-            && optional($this->reminder)->lessThan(Carbon::now());
+            && $this->reminder?->lessThan(Carbon::now());
     }
 }

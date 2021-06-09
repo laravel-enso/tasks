@@ -3,9 +3,9 @@
 namespace LaravelEnso\Tasks\Http\Controllers\Tasks;
 
 use Illuminate\Support\Facades\Config;
-use LaravelEnso\Core\Http\Controllers\Administration\User\Options as UserOptions;
+use LaravelEnso\Users\Http\Controllers\Options;
 
-class Users extends UserOptions
+class Users extends Options
 {
     public function query()
     {

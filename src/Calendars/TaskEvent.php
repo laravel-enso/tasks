@@ -12,11 +12,8 @@ use LaravelEnso\Tasks\Models\Task;
 
 class TaskEvent implements ProvidesEvent, Routable
 {
-    private Task $task;
-
-    public function __construct(Task $task)
+    public function __construct(private Task $task)
     {
-        $this->task = $task;
     }
 
     public function getKey()

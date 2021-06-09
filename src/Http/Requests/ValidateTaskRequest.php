@@ -56,7 +56,7 @@ class ValidateTaskRequest extends FormRequest
 
     private function invalidReminder(): bool
     {
-        $changed = ! optional($this->task())->reminder
+        $changed = ! $this->task()?->reminder
             || $this->task()->reminder->notEqualTo($this->get('reminder'));
 
         return $changed

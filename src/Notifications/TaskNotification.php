@@ -14,11 +14,8 @@ class TaskNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private Task $task;
-
-    public function __construct(Task $task)
+    public function __construct(private Task $task)
     {
-        $this->task = $task;
     }
 
     public function via()

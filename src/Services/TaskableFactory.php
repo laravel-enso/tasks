@@ -12,12 +12,12 @@ class TaskableFactory
         return Task::create([
             'name' => $taskable->name(),
             'description' => $taskable->description(),
-            'allocated_to' => optional($taskable->allocatedTo())->id,
+            'allocated_to' => $taskable->allocatedTo()?->id,
             'flag' => $taskable->flag(),
             'reminder' => $taskable->reminder(),
             'completed' => $taskable->completed(),
-            'created_by' => optional($taskable->createdBy())->id,
-            'updated_by' => optional($taskable->updatedBy())->id,
+            'created_by' => $taskable->createdBy()?->id,
+            'updated_by' => $taskable->updatedBy()?->id,
         ]);
     }
 }

@@ -3,8 +3,8 @@
 namespace LaravelEnso\Tasks\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Tasks\Models\Task as Model;
+use LaravelEnso\Users\Models\User;
 
 class Task
 {
