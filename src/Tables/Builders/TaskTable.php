@@ -6,12 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Helpers\Services\Obj;
+use LaravelEnso\Tables\Contracts\AuthenticatesOnExport;
 use LaravelEnso\Tables\Contracts\ConditionalActions;
 use LaravelEnso\Tables\Contracts\CustomFilter;
 use LaravelEnso\Tables\Contracts\Table;
 use LaravelEnso\Tasks\Models\Task;
 
-class TaskTable implements Table, CustomFilter, ConditionalActions
+class TaskTable implements Table, AuthenticatesOnExport, CustomFilter, ConditionalActions
 {
     protected const TemplatePath = __DIR__.'/../Templates/tasks.json';
 
