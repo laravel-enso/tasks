@@ -12,7 +12,9 @@ use LaravelEnso\Users\Models\User;
 
 class Task implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     public function __construct(private int $userId)
     {

@@ -13,9 +13,9 @@ class Store extends Controller
         $task->fill($request->validated())->save();
 
         return [
-            'message' => __('The task was successfully created'),
+            'message'  => __('The task was successfully created'),
             'redirect' => 'tasks.edit',
-            'param' => ['task' => $task->id],
+            'param'    => ['task' => $task->id],
         ];
     }
 }

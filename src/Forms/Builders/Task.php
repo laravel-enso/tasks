@@ -33,8 +33,8 @@ class Task
 
     private function cantAllocate(): bool
     {
-        return ! Auth::user()->isAdmin()
-            && ! Auth::user()->isSupervisor();
+        return !Auth::user()->isAdmin()
+            && !Auth::user()->isSupervisor();
     }
 
     protected function templatePath(): string

@@ -39,7 +39,7 @@ class TaskNotification extends Notification implements ShouldQueue
             ->subject("[ {$app} ] {$this->subject()}")
             ->line(__('This is a reminder for the following task:'))
             ->line(__(':name: :description', [
-                'name' => $this->task->name,
+                'name'        => $this->task->name,
                 'description' => $this->task->description,
             ]))->action(__('View Task'), "/tasks/{$this->task->id}/edit");
     }
