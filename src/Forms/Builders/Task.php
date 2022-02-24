@@ -4,17 +4,17 @@ namespace LaravelEnso\Tasks\Forms\Builders;
 
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Forms\Services\Form;
-use LaravelEnso\Tasks\Models\Task;
+use LaravelEnso\Tasks\Models\Task as Model;
 
-class TaskForm
+class Task
 {
-    protected const TemplatePath = __DIR__.'/../Templates/task.json';
+    private const TemplatePath = __DIR__.'/../Templates/task.json';
 
     protected Form $form;
 
     public function __construct()
     {
-        $this->form = (new Form(static::TemplatePath))
+        $this->form = (new Form($this->templatePath()))
             ->when($this->cantAllocate(), fn ($form) => $form
                 ->readonly('allocated_to'));
     }
@@ -26,7 +26,7 @@ class TaskForm
             ->create();
     }
 
-    public function edit(Task $task)
+    public function edit(Model $task)
     {
         return $this->form->edit($task);
     }
@@ -35,5 +35,10 @@ class TaskForm
     {
         return ! Auth::user()->isAdmin()
             && ! Auth::user()->isSupervisor();
+    }
+
+    protected function templatePath(): string
+    {
+        return self::TemplatePath;
     }
 }
