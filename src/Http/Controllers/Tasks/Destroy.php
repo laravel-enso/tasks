@@ -17,7 +17,7 @@ class Destroy extends Controller
         $task->delete();
 
         return [
-            'message' => __('The task was successfully deleted'),
+            'message'  => __('The task was successfully deleted'),
             'redirect' => 'tasks.index',
         ];
     }

@@ -27,7 +27,7 @@ class Task
     {
         Facade::dispatch(new Event($task->allocated_to));
 
-        if (! $task->wasRecentlyCreated && $task->isDirty('allocated_to')) {
+        if (!$task->wasRecentlyCreated && $task->isDirty('allocated_to')) {
             Facade::dispatch(new Event($task->getOriginal('allocated_to')));
         }
     }

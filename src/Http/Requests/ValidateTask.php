@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 use LaravelEnso\Tasks\Enums\Flags;
 use LaravelEnso\Tasks\Models\Task;
 
-class ValidateTaskRequest extends FormRequest
+class ValidateTask extends FormRequest
 {
     public function authorize()
     {
@@ -17,12 +17,12 @@ class ValidateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => "{$this->requiredOrFilled()}|string",
-            'description' => 'filled',
-            'flag' => 'nullable|in:'.Flags::keys()->implode(','),
-            'reminder' => 'nullable|date',
+            'name'         => "{$this->requiredOrFilled()}|string",
+            'description'  => 'filled',
+            'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
+            'reminder'     => 'nullable|date',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
-            'completed' => "{$this->requiredOrFilled()}|boolean",
+            'completed'    => "{$this->requiredOrFilled()}|boolean",
         ];
     }
 
@@ -56,7 +56,7 @@ class ValidateTaskRequest extends FormRequest
 
     private function invalidReminder(): bool
     {
-        $changed = ! $this->task()?->reminder
+        $changed = !$this->task()?->reminder
             || $this->task()->reminder->notEqualTo($this->get('reminder'));
 
         return $changed

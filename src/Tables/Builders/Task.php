@@ -10,18 +10,18 @@ use LaravelEnso\Tables\Contracts\AuthenticatesOnExport;
 use LaravelEnso\Tables\Contracts\ConditionalActions;
 use LaravelEnso\Tables\Contracts\CustomFilter;
 use LaravelEnso\Tables\Contracts\Table;
-use LaravelEnso\Tasks\Models\Task;
+use LaravelEnso\Tasks\Models\Task as Model;
 
-class TaskTable implements Table, AuthenticatesOnExport, CustomFilter, ConditionalActions
+class Task implements Table, AuthenticatesOnExport, CustomFilter, ConditionalActions
 {
-    protected const TemplatePath = __DIR__.'/../Templates/tasks.json';
+    private const TemplatePath = __DIR__.'/../Templates/tasks.json';
 
     public function query(): Builder
     {
         $now = Carbon::now();
         $overdue = "completed = true and reminder >= '{$now}'";
 
-        return Task::visible()
+        return Model::visible()
             ->with('createdBy.avatar', 'createdBy.person')
             ->with('allocatedTo.avatar', 'allocatedTo.person')
             ->selectRaw("
