@@ -2,7 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-class CreateStructureForTasks extends Migration
+return new class extends Migration
 {
     protected array $permissions = [
         ['name' => 'tasks.index', 'description' => 'Show index for tasks', 'is_default' => false],
@@ -23,4 +23,4 @@ class CreateStructureForTasks extends Migration
     ];
 
     protected ?string $parentMenu = '';
-}
+};
