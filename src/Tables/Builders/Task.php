@@ -33,7 +33,7 @@ class Task implements Table, AuthenticatesOnExport, CustomFilter, ConditionalAct
 
     public function templatePath(): string
     {
-        return static::TemplatePath;
+        return self::TemplatePath;
     }
 
     public function filterApplies(Obj $params): bool
