@@ -21,6 +21,9 @@ class Statuses implements MigratesTable, MigratesPostDataMigration, MigratesData
     {
         Schema::table('tasks', function ($table) {
             $table->smallInteger('status')->nullable()->after('reminder');
+            $table->dateTime('from')->nullable()->after('status');
+            $table->dateTime('to')->nullable()->after('status');
+            $table->boolean('muted')->default(false)->after('to');
         });
     }
 

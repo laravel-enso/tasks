@@ -1,6 +1,6 @@
 <?php
 
-namespace  LaravelEnso\Tasks\Upgrades;
+namespace App\Upgrades;
 
 use LaravelEnso\Upgrade\Contracts\MigratesStructure;
 use LaravelEnso\Upgrade\Traits\StructureMigration;
