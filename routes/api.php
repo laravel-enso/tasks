@@ -33,4 +33,7 @@ Route::middleware(['api', 'auth', 'core'])
         Route::get('', Index::class)->name('index');
 
         Route::get('users', Users::class)->name('users');
+
+        require __DIR__.'/checklistsItems.php';
+        require __DIR__.'/comments.php';
     });

@@ -12,6 +12,7 @@ use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
 use LaravelEnso\Users\Models\User;
+use LaravelEnso\Tasks\Enums\Statuses;
 
 class Task extends Model
 {
@@ -22,9 +23,9 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['reminder', 'reminded_at'];
+    protected $dates = ['reminder', 'reminded_at', 'from', 'to'];
 
-    protected $casts = ['completed' => 'boolean'];
+    protected $casts = ['muted' => 'boolean'];
 
     public function allocatedTo(): Relation
     {
@@ -54,12 +55,33 @@ class Task extends Model
 
     public function scopePending($query)
     {
-        return $query->whereCompleted(false);
+        return $query->whereStatus(Statuses::InProgress);
     }
 
     public function scopeCompleted($query)
     {
-        return $query->whereCompleted(true);
+        return $query->whereStatus(Statuses::Finished);
+    }
+
+    public function overdue(): bool
+    {
+        return $this->status !== Statuses::Finished
+            && $this->reminder?->lessThan(Carbon::now());
+    }
+
+    public function updateStatus(): void
+    {
+        $completedCheckList = $this->checklistItems()->completed()->count();
+        $totalCheckList = $this->checklistItems()->count();
+
+        $status = match($completedCheckList)
+        {
+            $totalCheckList => Statuses::Finished,
+            0 => Statuses::New,
+            default => Statuses::InProgress,
+        };
+
+        $this->update(['status' => $status]);
     }
 
     public function setReminderAttribute($dateTime)
@@ -79,9 +101,4 @@ class Task extends Model
         $this->update(['reminded_at' => Carbon::now()]);
     }
 
-    public function overdue(): bool
-    {
-        return !$this->completed
-            && $this->reminder?->lessThan(Carbon::now());
-    }
 }
