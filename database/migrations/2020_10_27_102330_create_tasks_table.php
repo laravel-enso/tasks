@@ -15,7 +15,7 @@ return new class extends Migration
             $table->text('description');
 
             $table->tinyInteger('flag')->nullable()->index();
-
+            $table->boolean('completed')->index();
             $table->dateTime('reminder')->nullable();
             $table->smallInteger('status')->nullable();
             $table->dateTime('from')->nullable();
