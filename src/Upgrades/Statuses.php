@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\Tasks\Upgrades;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use LaravelEnso\Tasks\Enums\Statuses as StatusesEnum;
 use LaravelEnso\Upgrade\Contracts\MigratesTable;
@@ -20,7 +21,7 @@ class Statuses implements MigratesTable, MigratesPostDataMigration, MigratesData
     public function migrateTable(): void
     {
         Schema::table('tasks', function ($table) {
-            $table->smallInteger('status')->nullable()->after('reminder');
+            $table->tinyInteger('status')->nullable()->after('reminder');
         });
     }
 
@@ -35,8 +36,11 @@ class Statuses implements MigratesTable, MigratesPostDataMigration, MigratesData
     public function migratePostDataMigration(): void
     {
         Schema::table('tasks', function ($table) {
-            $table->smallInteger('status')->nullable('false')->change();
             $table->dropColumn('completed');
         });
+
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE `tasks` CHANGE status status TINYINT(3) NOT NULL');
+        }
     }
 }

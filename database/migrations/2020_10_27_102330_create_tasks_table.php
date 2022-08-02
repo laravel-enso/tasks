@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('flag')->nullable()->index();
 
             $table->dateTime('reminder')->nullable();
-            $table->smallInteger('status');
+            $table->tinyInteger('status');
             $table->dateTime('from')->nullable();
             $table->dateTime('to')->nullable();
             $table->boolean('muted')->default(0);
