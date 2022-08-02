@@ -21,8 +21,11 @@ class ValidateTask extends FormRequest
             'description'  => 'filled',
             'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
             'reminder'     => 'nullable|date',
+            'from' => 'nullable|date',
+            'to' => 'nullable|date',
+            'muted' => 'nullable|boolean',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
-            'completed'    => "{$this->requiredOrFilled()}|boolean",
+            'status' => "{$this->requiredOrFilled()}",
         ];
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Tables\Traits\TableCache;
+use LaravelEnso\Tasks\Enums\Statuses;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
@@ -22,9 +23,9 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['reminder', 'reminded_at'];
+    protected $dates = ['reminder', 'reminded_at','from','to'];
 
-    protected $casts = ['completed' => 'boolean'];
+    protected $casts = [];
 
     public function allocatedTo(): Relation
     {
@@ -47,19 +48,19 @@ class Task extends Model
         $user = Auth::user();
         $superiorUser = $user->isAdmin() || $user->isSupervisor();
 
-        return $query->when(!$superiorUser, fn ($query) => $query
-            ->where(fn ($query) => $query->whereCreatedBy($user->id)
+        return $query->when(!$superiorUser, fn($query) => $query
+            ->where(fn($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
 
     public function scopePending($query)
     {
-        return $query->whereCompleted(false);
+        return $query->whereStatus(Statuses::Progress);
     }
 
     public function scopeCompleted($query)
     {
-        return $query->whereCompleted(true);
+        return $query->whereStatus(Statuses::Finished);
     }
 
     public function setReminderAttribute($dateTime)
@@ -81,7 +82,32 @@ class Task extends Model
 
     public function overdue(): bool
     {
-        return !$this->completed
+        return $this->status != Statuses::Finished
             && $this->reminder?->lessThan(Carbon::now());
+    }
+
+    public function checklistItem()
+    {
+        return $this->hasMany(ChecklistItem::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function updateStatus()
+    {
+        $completedChecklist = $this->checklistItem()->completed()->count();
+
+        $count = $this->checklistItem()->count();
+
+        $status = match ($completedChecklist) {
+            $count => Statuses::Finished,
+            0 => Statuses::New,
+            default => Statuses::Progress,
+        };
+
+        $this->update(['status' => $status]);
     }
 }

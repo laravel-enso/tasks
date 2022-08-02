@@ -26,7 +26,7 @@
             ]
         },
         {
-            "columns": 3,
+            "columns": 2,
             "fields": [
                 {
                     "label": "Allocated To",
@@ -50,12 +50,39 @@
                     }
                 },
                 {
-                    "label": "Completed",
-                    "name": "completed",
-                    "value": false,
+                    "label": "Status",
+                    "name": "status",
+                    "value": null,
                     "meta": {
-                        "type": "input",
-                        "content": "checkbox"
+                        "type": "select",
+                        "options": "LaravelEnso\\Tasks\\Enums\\Statuses"
+                    }
+                }
+            ]
+        },
+        {
+            "columns": 2,
+            "fields": [
+                {
+                    "label": "From",
+                    "name": "from",
+                    "value": "",
+                    "meta": {
+                        "type": "datepicker",
+                        "altFormat": "m-d-Y H:i",
+                        "format": "Y-m-d H:i:s",
+                        "time": true
+                    }
+                },
+                {
+                    "label": "To",
+                    "name": "to",
+                    "value": "",
+                    "meta": {
+                        "type": "datepicker",
+                        "altFormat": "m-d-Y H:i",
+                        "format": "Y-m-d H:i:s",
+                        "time": true
                     }
                 }
             ]

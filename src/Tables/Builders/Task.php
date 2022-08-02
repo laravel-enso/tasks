@@ -10,6 +10,7 @@ use LaravelEnso\Tables\Contracts\AuthenticatesOnExport;
 use LaravelEnso\Tables\Contracts\ConditionalActions;
 use LaravelEnso\Tables\Contracts\CustomFilter;
 use LaravelEnso\Tables\Contracts\Table;
+use LaravelEnso\Tasks\Enums\Statuses;
 use LaravelEnso\Tasks\Models\Task as Model;
 
 class Task implements Table, AuthenticatesOnExport, CustomFilter, ConditionalActions
@@ -19,13 +20,14 @@ class Task implements Table, AuthenticatesOnExport, CustomFilter, ConditionalAct
     public function query(): Builder
     {
         $now = Carbon::now();
-        $overdue = "completed = true and reminder >= '{$now}'";
+        $finished = Statuses::Finished;
+        $overdue = "status = '$finished' and reminder >= '{$now}'";
 
         return Model::visible()
             ->with('createdBy.avatar', 'createdBy.person')
             ->with('allocatedTo.avatar', 'allocatedTo.person')
             ->selectRaw("
-                tasks.id, tasks.name, tasks.description, tasks.flag, tasks.completed,
+                tasks.id, tasks.name, tasks.description, tasks.flag, tasks.status,
                 tasks.allocated_to, tasks.reminder, tasks.reminder as rawReminder,
                 created_by, created_at, {$overdue} as overdue
             ");

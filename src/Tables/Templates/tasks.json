@@ -6,6 +6,7 @@
         "excel",
         "create",
         "edit",
+        "show",
         "destroy"
     ],
     "strip": ["allocated_to", "created_by"],
@@ -46,13 +47,14 @@
             "notExportable"
         ]
     }, {
-        "label": "Completed",
-        "name": "completed",
-        "data": "tasks.completed",
+        "label": "Status",
+        "name": "status",
+        "data": "tasks.status",
         "meta": [
             "sortable",
             "slot"
-        ]
+        ],
+        "enum": "LaravelEnso\\Tasks\\Enums\\Statuses"
     }, {
         "label": "Created At",
         "name": "created_at",
