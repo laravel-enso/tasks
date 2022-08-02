@@ -15,7 +15,7 @@ class Store extends Controller
 
         return [
             'message' => __('The checklist item was successfully created'),
-            'redirect' => 'taskChecklistItems.edit',
+            'redirect' => 'tasks.checklistItems.edit',
             'param' => ['checklist' => $checklistItem->id],
         ];
     }
