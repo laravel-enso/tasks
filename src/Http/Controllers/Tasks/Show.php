@@ -15,7 +15,7 @@ class Show extends Controller
     {
         $this->authorize('handle', $task);
 
-        return ['task' => new Resource($task->load(['checklistItem', 'allocatedTo', 'activity:id,name',
+        return ['task' => new Resource($task->load(['checklistItem', 'allocatedTo',
             'allocatedTo.avatar', 'allocatedTo.person','createdBy','createdBy.person']))];
     }
 }
