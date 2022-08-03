@@ -25,7 +25,7 @@ class Task extends JsonResource
             'remindedAt' => $this->reminded_at,
             'allocatedTo' => new User($this->whenLoaded('allocatedTo')),
             'createdBy' => new User($this->whenLoaded('createdBy')),
-            'taskChecklistItems' => ChecklistItems::collection($this->whenLoaded('checklistItem')),
+            'taskChecklistItems' => ChecklistItems::collection($this->whenLoaded('checklistItems')),
             'completedTaskChecklistItems' => $this->completedTaskChecklistItems(),
             'createdAt' => Carbon::parse($this->created_at)->format('d-m-Y H:i'),
             'updatedAt' => Carbon::parse($this->updated_at)->diffForHumans(),
@@ -34,6 +34,6 @@ class Task extends JsonResource
 
     public function completedTaskChecklistItems()
     {
-        return "{$this->checklistItem()->completed()->count()}/{$this->checklistItem->count()}";
+        return "{$this->checklistItems()->completed()->count()}/{$this->checklistItems->count()}";
     }
 }

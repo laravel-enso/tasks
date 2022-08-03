@@ -86,7 +86,7 @@ class Task extends Model
             && $this->reminder?->lessThan(Carbon::now());
     }
 
-    public function checklistItem()
+    public function checklistItems()
     {
         return $this->hasMany(ChecklistItem::class);
     }
@@ -98,9 +98,9 @@ class Task extends Model
 
     public function updateStatus()
     {
-        $completedChecklist = $this->checklistItem()->completed()->count();
+        $completedChecklist = $this->checklistItems()->completed()->count();
 
-        $count = $this->checklistItem()->count();
+        $count = $this->checklistItems()->count();
 
         $status = match ($completedChecklist) {
             $count => Statuses::Finished,
