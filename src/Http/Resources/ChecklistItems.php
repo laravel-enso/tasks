@@ -17,7 +17,7 @@ class ChecklistItems extends JsonResource
             'taskId' => $this->task_id,
             'isCompleted' => $this->is_completed,
             'orderIndex' => $this->order_index,
-            'createdAt' => Carbon::parse($this->order_index)->format('d-m-Y H:i')
+            'createdAt' => Carbon::parse($this->created_at)->format('d-m-Y H:i')
         ];
     }
 }

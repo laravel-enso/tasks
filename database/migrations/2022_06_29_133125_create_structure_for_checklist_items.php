@@ -7,9 +7,7 @@ class CreateStructureForChecklistItems extends Migration
     protected array $permissions = [
         ['name' => 'tasks.checklistItems.index', 'description' => 'Show index for task checklist items', 'is_default' => false],
 
-        ['name' => 'tasks.checklistItems.create', 'description' => 'Create task checklist item', 'is_default' => false],
         ['name' => 'tasks.checklistItems.store', 'description' => 'Store a new task checklist item', 'is_default' => false],
-        ['name' => 'tasks.checklistItems.edit', 'description' => 'Edit task checklist item', 'is_default' => false],
         ['name' => 'tasks.checklistItems.update', 'description' => 'Update task checklist item', 'is_default' => false],
         ['name' => 'tasks.checklistItems.destroy', 'description' => 'Delete task checklist item', 'is_default' => false],
         
