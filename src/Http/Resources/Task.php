@@ -4,6 +4,7 @@ namespace LaravelEnso\Tasks\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
+use LaravelEnso\Tasks\Http\Resources\ChecklistItem;
 
 class Task extends JsonResource
 {
@@ -19,8 +20,8 @@ class Task extends JsonResource
             'reminder'      => $this->reminder,
             'from'          => Carbon::parse($this->from)->toFormattedDateString(),
             'to'            => Carbon::parse($this->to)->toFormattedDateString(),
-            'checklist'     => $this->checklistItems,
-            'completedChecklist' => $this->completedChecklist($this->checklistItems),
+            'taskChecklistItems' => ChecklistItem::collection($this->whenLoaded('checklistItems')),
+            'completedChecklist' => $this->completedChecklist(),
             'allocatedTo'   => $this->allocatedTo,
             'createdBy'     => $this->createdBy->person->name,
             'updatedAt'     => $this->updated_at->diffForHumans(),
@@ -28,15 +29,8 @@ class Task extends JsonResource
         ];
     }
 
-    private function completedChecklist($checklists): array
+    private function completedChecklist(): string
     {
-        $completed = $checklists->filter(function ($checklist) {
-            return $checklist->is_completed;
-        })->count();
-
-        return [
-            'percentageValue' => $checklists->count() > 0 ? round(($completed / $checklists->count()) * 100) : 0,
-            'percentageString' => $completed.'/'.count($checklists),
-        ];
+        return "{$this->checklistItems()->completed()->count()}/{$this->checklistItems->count()}";
     }
 }

@@ -5,11 +5,11 @@ namespace LaravelEnso\Tasks\Http\Controllers\Tasks\Comments;
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Http\Requests\Task\Comments\ValidateCommentStore;
 use LaravelEnso\Tasks\Http\Resources\Comment as Resource;
-use LaravelEnso\Tasks\Models\TaskComment;
+use LaravelEnso\Tasks\Models\Comment;
 
 class Store extends Controller
 {
-    public function __invoke(ValidateCommentStore $request, TaskComment $comment)
+    public function __invoke(ValidateCommentStore $request, Comment $comment)
     {
         $comment->fill($request->validatedExcept('path'));
         tap($comment)->save();

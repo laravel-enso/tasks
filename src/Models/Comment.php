@@ -8,7 +8,7 @@ use LaravelEnso\Helpers\Traits\UpdatesOnTouch;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
 
-class TaskComment extends Model
+class Comment extends Model
 {
     use CreatedBy, HasFactory, UpdatedBy, UpdatesOnTouch;
 

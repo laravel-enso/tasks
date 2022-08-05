@@ -7,7 +7,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use LaravelEnso\Comments\Models\Comment as Model;
 use LaravelEnso\Users\Models\User;
 
-class TaskComment
+class Comment
 {
     use HandlesAuthorization;
 

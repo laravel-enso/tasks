@@ -5,13 +5,13 @@ namespace LaravelEnso\Tasks\Http\Controllers\Tasks\Comments;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Config;
 use LaravelEnso\Tasks\Http\Resources\Comment as Resource;
-use LaravelEnso\Tasks\Models\TaskComment;
+use LaravelEnso\Tasks\Models\Comment;
 
 class Index extends Controller
 {
     public function __invoke(ValidateCommentFetch $request)
     {
-        $comments = TaskComment::latest()->whereTaskId($request->validated())
+        $comments = Comment::latest()->whereTaskId($request->validated())
             ->with('createdBy.person', 'createdBy.avatar', 'updatedBy')
             ->get();
 
