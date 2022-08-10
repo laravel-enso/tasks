@@ -18,15 +18,15 @@ class ValidateTask extends FormRequest
     public function rules()
     {
         return [
-            'name'         => "{$this->requiredOrFilled()}|string",
-            'description'  => 'filled',
-            'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
-            'reminder'     => 'nullable|date',
-            'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
-            'status' => "{$this->requiredOrFilled()}|in:".Statuses::keys()->implode(','),
-            'from' => "{$this->requiredOrFilled()}|date",
-            'to' => "{$this->requiredOrFilled()}|date",
-            'muted' => 'nullable|boolean',
+            'name'          => "{$this->requiredOrFilled()}|string",
+            'description'   => 'filled',
+            'flag'          => 'nullable|in:'.Flags::keys()->implode(','),
+            'reminder'      => 'nullable|date',
+            'allocated_to'  => "{$this->requiredOrFilled()}|exists:users,id",
+            'status'        => "{$this->requiredOrFilled()}|in:".Statuses::keys()->implode(','),
+            'from'          => "{$this->requiredOrFilled()}|date",
+            'to'            => "{$this->requiredOrFilled()}|date",
+            'muted'         => 'nullable|boolean',
         ];
     }
 

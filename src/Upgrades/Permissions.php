@@ -11,6 +11,6 @@ class Permissions implements MigratesStructure
 
     protected array $permissions = [
         ['name' => 'tasks.show', 'description' => 'Display task information', 'is_default' => true],
-        ['name' => 'tasks.options', 'description' => 'Get tasks options for select', 'is_default' => false]
+        ['name' => 'tasks.options', 'description' => 'Get tasks options for select', 'is_default' => false],
     ];
 }

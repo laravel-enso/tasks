@@ -8,7 +8,6 @@ use LaravelEnso\Tasks\Http\Requests\Task\Comments\ValidateCommentUpdate;
 use LaravelEnso\Tasks\Http\Resources\Comment as Resource;
 use LaravelEnso\Tasks\Models\Comment;
 
-
 class Update extends Controller
 {
     use AuthorizesRequests;

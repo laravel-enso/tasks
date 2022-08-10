@@ -14,8 +14,8 @@ class Store extends Controller
 
         return [
             'message' => __('The item was successfully created'),
-            'param' => ['checklist' => $checklistItem->id],
-            'data' => $checklistItem,
+            'param'   => ['checklist' => $checklistItem->id],
+            'data'    => $checklistItem,
         ];
     }
 }

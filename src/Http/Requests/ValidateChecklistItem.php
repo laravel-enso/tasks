@@ -14,10 +14,10 @@ class ValidateChecklistItem extends FormRequest
     public function rules()
     {
         return [
-            'name' => "{$this->requiredOrFilled()}|string|max:255",
-            'task_id' => "{$this->requiredOrFilled()}|integer|exists:tasks,id",
-            'order_index' => 'nullable|integer',
-            'is_completed' => 'nullable|boolean',
+            'name'          => "{$this->requiredOrFilled()}|string|max:255",
+            'task_id'       => "{$this->requiredOrFilled()}|integer|exists:tasks,id",
+            'order_index'   => 'nullable|integer',
+            'is_completed'  => 'nullable|boolean',
         ];
     }
 

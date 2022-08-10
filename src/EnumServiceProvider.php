@@ -9,7 +9,7 @@ use LaravelEnso\Tasks\Enums\Statuses;
 class EnumServiceProvider extends ServiceProvider
 {
     public $register = [
-        'flags' => Flags::class,
-        'Statuses' => Statuses::class,
+        'flags'     => Flags::class,
+        'Statuses'  => Statuses::class,
     ];
 }

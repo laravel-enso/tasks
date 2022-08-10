@@ -3,10 +3,8 @@
 namespace LaravelEnso\Tasks\Upgrades;
 
 use Illuminate\Support\Facades\Schema;
-use LaravelEnso\Tasks\Enums\Statuses as StatusesEnum;
 use LaravelEnso\Upgrade\Contracts\MigratesTable;
 use LaravelEnso\Upgrade\Helpers\Table;
-use LaravelEnso\Tasks\Models\Task;
 
 class From implements MigratesTable
 {
@@ -21,5 +19,4 @@ class From implements MigratesTable
             $table->dateTime('from')->nullable()->after('reminder');
         });
     }
-    
 }

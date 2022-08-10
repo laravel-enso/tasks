@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tasks\Comments\Destroy;
 use App\Http\Controllers\Tasks\Comments\Index;
 use App\Http\Controllers\Tasks\Comments\Store;
 use App\Http\Controllers\Tasks\Comments\Update;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('comments')
     ->as('comments.')

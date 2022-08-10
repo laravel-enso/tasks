@@ -2,8 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-return new class extends Migration
-{
+return new class extends Migration {
     protected array $permissions = [
         ['name' => 'tasks.checklistItems.store', 'description' => 'Store a new check list', 'is_default' => false],
         ['name' => 'tasks.checklistItems.update', 'description' => 'Update check list', 'is_default' => false],

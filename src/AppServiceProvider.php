@@ -8,8 +8,8 @@ use LaravelEnso\DynamicMethods\Services\Methods;
 use LaravelEnso\Tasks\Commands\SendTaskReminders;
 use LaravelEnso\Tasks\DynamicRelations\Tasks;
 use LaravelEnso\Tasks\Models\ChecklistItem;
-use LaravelEnso\Tasks\Observers\ChecklistItem as ChecklistItemObserver;
 use LaravelEnso\Tasks\Models\Task as Model;
+use LaravelEnso\Tasks\Observers\ChecklistItem as ChecklistItemObserver;
 use LaravelEnso\Tasks\Observers\Task as Observer;
 use LaravelEnso\Users\Models\User;
 

@@ -10,8 +10,10 @@ use LaravelEnso\TrackWho\Traits\UpdatedBy;
 
 class Comment extends Model
 {
-    use CreatedBy, HasFactory, UpdatedBy, UpdatesOnTouch;
+    use CreatedBy;
+    use HasFactory;
+    use UpdatedBy;
+    use UpdatesOnTouch;
 
     protected $guarded = ['id'];
-
 }

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Tables\Traits\TableCache;
+use LaravelEnso\Tasks\Enums\Statuses;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
 use LaravelEnso\Users\Models\User;
-use LaravelEnso\Tasks\Enums\Statuses;
 
 class Task extends Model
 {
@@ -74,11 +74,10 @@ class Task extends Model
         $completedCheckList = $this->checklistItems()->completed()->count();
         $totalCheckList = $this->checklistItems()->count();
 
-        $status = match($completedCheckList)
-        {
+        $status = match($completedCheckList) {
             $totalCheckList => Statuses::Finished,
-            0 => Statuses::New,
-            default => Statuses::InProgress,
+            0               => Statuses::New,
+            default         => Statuses::InProgress,
         };
 
         $this->update(['status' => $status]);
@@ -100,5 +99,4 @@ class Task extends Model
 
         $this->update(['reminded_at' => Carbon::now()]);
     }
-
 }

@@ -11,8 +11,8 @@ class Statuses extends Enum
     public const Finished = 3;
 
     protected static array $data = [
-        self::New => 'New',
-        self::InProgress => 'In Progress',
-        self::Finished => 'Finished',
+        self::New         => 'New',
+        self::InProgress  => 'In Progress',
+        self::Finished    => 'Finished',
     ];
 }
