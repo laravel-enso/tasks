@@ -13,8 +13,8 @@ class ValidateComment extends FormRequest
     {
         return [
             'task_id' => "{$this->requiredOrFilled()}|exists:tasks,id",
-            'body' => "{$this->requiredOrFilled()}|required",
-            'path' => "{$this->requiredOrFilled()}",
+            'body'    => "{$this->requiredOrFilled()}|required",
+            'path'    => "{$this->requiredOrFilled()}",
         ];
     }
 

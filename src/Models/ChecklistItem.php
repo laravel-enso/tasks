@@ -15,7 +15,6 @@ class ChecklistItem extends Model
 
     protected $casts = ['is_completed' => 'boolean'];
 
-
     public function task()
     {
         return $this->belongsTo(Task::class);
