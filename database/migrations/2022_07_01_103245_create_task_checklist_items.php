@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('task_checklist_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained('tasks');
+
             $table->string('name');
             $table->unsignedInteger('order_index')->nullable();
             $table->boolean('is_completed');

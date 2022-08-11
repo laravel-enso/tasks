@@ -1,41 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e1baaf-bb76-4471-8314-f29125d77755" name="Changes" comment="chore: refactor and updated files">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/tasks.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="19e1baaf-bb76-4471-8314-f29125d77755" name="Changes" comment="fix: fix issues flagged by ci/cd pipeline">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tasks.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_27_102330_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_102330_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_27_102337_create_structure_for_tasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_102337_create_structure_for_tasks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2022_07_01_103245_create_task_checklist_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_07_01_103245_create_task_checklist_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_07_01_103248_create_structure_for_task_checklist_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_07_01_103248_create_structure_for_task_checklist_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_07_20_104852_create_task_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_07_20_104852_create_task_comments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_07_20_160001_create_structure_for_task_comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_07_20_160001_create_structure_for_task_comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/checklistsItems.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/checklistsItems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enums/Statuses.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/Statuses.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/Tasks/ChecklistItems/Store.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/Tasks/ChecklistItems/Store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/Tasks/Comments/Update.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/Tasks/Comments/Update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/Tasks/Show.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/Tasks/Show.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Requests/Comments/ValidateCommentFetch.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Requests/Comments/ValidateCommentFetch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Requests/ValidateChecklistItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Requests/ValidateChecklistItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Requests/ValidateTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Requests/ValidateTask.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Resources/ChecklistItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Resources/ChecklistItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Resources/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Resources/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Resources/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Resources/Task.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/ChecklistItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ChecklistItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Upgrades/From.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Upgrades/From.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Upgrades/Muted.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Upgrades/Muted.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Upgrades/Permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Upgrades/Permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Upgrades/Statuses.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Upgrades/Statuses.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Upgrades/To.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Upgrades/To.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +67,8 @@
       <workItem from="1659694415460" duration="2780000" />
       <workItem from="1659805725715" duration="1743000" />
       <workItem from="1659953408376" duration="3000" />
-      <workItem from="1660142885992" duration="2165000" />
+      <workItem from="1660142885992" duration="3959000" />
+      <workItem from="1660199737317" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="whip: add .gitignore">
       <created>1659366293626</created>
@@ -144,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659941637908</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix: fix issues flagged by ci/cd pipeline">
+      <created>1660145113673</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660145113673</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +152,7 @@
     <MESSAGE value="chore: removed unwanted fields from Statuses.php" />
     <MESSAGE value="chore: updated observer in AppServiceProvider.php" />
     <MESSAGE value="chore: refactor and updated files" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: refactor and updated files" />
+    <MESSAGE value="fix: fix issues flagged by ci/cd pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fix issues flagged by ci/cd pipeline" />
   </component>
 </project>

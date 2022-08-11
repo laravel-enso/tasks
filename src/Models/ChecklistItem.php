@@ -9,6 +9,7 @@ use LaravelEnso\Tables\Traits\TableCache;
 class ChecklistItem extends Model
 {
     use TableCache;
+
     protected $table = 'task_checklist_items';
 
     protected $guarded = ['id'];
