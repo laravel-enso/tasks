@@ -19,5 +19,4 @@ class Muted implements MigratesTable
             $table->dateTime('muted')->nullable()->after('reminder');
         });
     }
-
 }

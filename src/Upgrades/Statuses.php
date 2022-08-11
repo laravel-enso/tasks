@@ -5,11 +5,11 @@ namespace LaravelEnso\Tasks\Upgrades;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use LaravelEnso\Tasks\Enums\Statuses as StatusesEnum;
-use LaravelEnso\Upgrade\Contracts\MigratesTable;
+use LaravelEnso\Tasks\Models\Task;
 use LaravelEnso\Upgrade\Contracts\MigratesData;
 use LaravelEnso\Upgrade\Contracts\MigratesPostDataMigration;
+use LaravelEnso\Upgrade\Contracts\MigratesTable;
 use LaravelEnso\Upgrade\Helpers\Table;
-use LaravelEnso\Tasks\Models\Task;
 
 class Statuses implements MigratesTable, MigratesPostDataMigration, MigratesData
 {

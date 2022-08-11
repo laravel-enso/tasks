@@ -2,11 +2,11 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\Comments;
 
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
 use LaravelEnso\Tasks\Http\Requests\ValidateCommentFetch;
 use LaravelEnso\Tasks\Http\Resources\Comment as Resource;
 use LaravelEnso\Tasks\Models\Comment;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Config;
 
 class Index extends Controller
 {

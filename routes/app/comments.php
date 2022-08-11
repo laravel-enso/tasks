@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use LaravelEnso\Tasks\Http\Controllers\Comments\Destroy;
 use LaravelEnso\Tasks\Http\Controllers\Comments\Index;
 use LaravelEnso\Tasks\Http\Controllers\Comments\Store;
 use LaravelEnso\Tasks\Http\Controllers\Comments\Update;
-use Illuminate\Support\Facades\Route;
 
 Route::prefix('comments')
     ->as('comments.')

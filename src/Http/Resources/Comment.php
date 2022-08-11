@@ -3,7 +3,6 @@
 namespace LaravelEnso\Tasks\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use LaravelEnso\Comments\Http\Resources\TaggedUser;
 use LaravelEnso\Users\Http\Resources\User;
 
 class Comment extends JsonResource
@@ -11,13 +10,13 @@ class Comment extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'body' => $this->body,
-            'owner' => new User($this->whenLoaded('createdBy')),
-            'isEditable' => $this->isEditable($request),
+            'id'          => $this->id,
+            'body'        => $this->body,
+            'owner'       => new User($this->whenLoaded('createdBy')),
+            'isEditable'  => $this->isEditable($request),
             'isDeletable' => $this->isDeletable($request),
-            'createdAt' => $this->created_at->toDatetimeString(),
-            'updatedAt' => $this->updated_at->toDatetimeString(),
+            'createdAt'   => $this->created_at->toDatetimeString(),
+            'updatedAt'   => $this->updated_at->toDatetimeString(),
         ];
     }
 

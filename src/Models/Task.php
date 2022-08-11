@@ -23,7 +23,7 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['reminder', 'reminded_at','from','to'];
+    protected $dates = ['reminder', 'reminded_at', 'from', 'to'];
 
     protected $casts = [];
 
@@ -48,14 +48,14 @@ class Task extends Model
         $user = Auth::user();
         $superiorUser = $user->isAdmin() || $user->isSupervisor();
 
-        return $query->when(!$superiorUser, fn($query) => $query
-            ->where(fn($query) => $query->whereCreatedBy($user->id)
+        return $query->when(!$superiorUser, fn ($query) => $query
+            ->where(fn ($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
 
     public function scopePending($query)
     {
-        return $query->whereStatus(Statuses::Progress);
+        return $query->whereStatus(Statuses::InProgress);
     }
 
     public function scopeCompleted($query)
@@ -103,9 +103,9 @@ class Task extends Model
         $count = $this->checklistItems()->count();
 
         $status = match ($completedChecklist) {
-            $count => Statuses::Finished,
-            0 => Statuses::New,
-            default => Statuses::Progress,
+            $count  => Statuses::Finished,
+            0       => Statuses::New,
+            default => Statuses::InProgress,
         };
 
         $this->update(['status' => $status]);

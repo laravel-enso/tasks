@@ -2,8 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-return new class extends Migration
-{
+return new class extends Migration {
     protected array $permissions = [
         ['name' => 'tasks.index', 'description' => 'Show index for tasks', 'is_default' => false],
         ['name' => 'tasks.create', 'description' => 'Create task', 'is_default' => false],
@@ -17,7 +16,7 @@ return new class extends Migration
         ['name' => 'tasks.count', 'description' => 'Get number of pending tasks', 'is_default' => false],
         ['name' => 'tasks.users', 'description' => 'Get user options for task allocation', 'is_default' => false],
         ['name' => 'tasks.show', 'description' => 'Display task information', 'is_default' => true],
-        ['name' => 'tasks.options', 'description' => 'Get tasks options for select', 'is_default' => false]
+        ['name' => 'tasks.options', 'description' => 'Get tasks options for select', 'is_default' => false],
     ];
 
     protected array $menu = [

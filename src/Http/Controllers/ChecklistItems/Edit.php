@@ -2,9 +2,9 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\ChecklistItems;
 
+use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Forms\Builders\ChecklistItem as Form;
 use LaravelEnso\Tasks\Models\ChecklistItem;
-use Illuminate\Routing\Controller;
 
 class Edit extends Controller
 {

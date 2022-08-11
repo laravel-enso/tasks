@@ -2,11 +2,11 @@
 
 namespace LaravelEnso\Tasks\Policies;
 
-use LaravelEnso\Tasks\Models\Comment as Model;
-use LaravelEnso\Users\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Config;
+use LaravelEnso\Tasks\Models\Comment as Model;
+use LaravelEnso\Users\Models\User;
 
 class Comment
 {
@@ -33,7 +33,7 @@ class Comment
 
     private function ownsComment(User $user, Model $comment)
     {
-        return $user->id === (int)$comment->created_by;
+        return $user->id === (int) $comment->created_by;
     }
 
     private function isRecent(Model $comment)

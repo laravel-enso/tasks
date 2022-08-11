@@ -2,9 +2,9 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\ChecklistItems;
 
-use LaravelEnso\Tasks\Models\ChecklistItem;
-use Illuminate\Routing\Controller;
 use function __;
+use Illuminate\Routing\Controller;
+use LaravelEnso\Tasks\Models\ChecklistItem;
 
 class Destroy extends Controller
 {
@@ -13,7 +13,7 @@ class Destroy extends Controller
         $checklistItem->delete();
 
         return [
-            'message' => __('The checklist item was successfully deleted'),
+            'message'  => __('The checklist item was successfully deleted'),
             'redirect' => 'checklists.index',
         ];
     }

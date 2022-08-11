@@ -12,9 +12,9 @@ class ValidateComment extends FormRequest
     public function rules()
     {
         return [
-                'task_id' => "{$this->requiredOrFilled()}|exists:tasks,id",
-                'body' => "{$this->requiredOrFilled()}|required",
-                'path' => "{$this->requiredOrFilled()}",
+            'task_id' => "{$this->requiredOrFilled()}|exists:tasks,id",
+            'body' => "{$this->requiredOrFilled()}|required",
+            'path' => "{$this->requiredOrFilled()}",
             ];
     }
 
@@ -24,5 +24,4 @@ class ValidateComment extends FormRequest
             ? 'required'
             : 'filled';
     }
-
 }

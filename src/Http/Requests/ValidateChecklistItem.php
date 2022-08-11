@@ -10,8 +10,8 @@ class ValidateChecklistItem extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', $this->unique('name'), 'max:255'],
-            'task_id' => ['required', 'exists:tasks,id'],
+            'name'         => ['required', 'string', $this->unique('name'), 'max:255'],
+            'task_id'      => ['required', 'exists:tasks,id'],
             'is_completed' => 'required|boolean'
         ];
     }

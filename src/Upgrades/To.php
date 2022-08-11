@@ -19,5 +19,4 @@ class To implements MigratesTable
             $table->dateTime('to')->nullable()->after('reminder');
         });
     }
-
 }

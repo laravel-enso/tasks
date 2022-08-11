@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\ChecklistItems;
 
-use LaravelEnso\Tasks\Forms\Builders\ChecklistItem;
 use Illuminate\Routing\Controller;
+use LaravelEnso\Tasks\Forms\Builders\ChecklistItem;
 
 class Create extends Controller
 {

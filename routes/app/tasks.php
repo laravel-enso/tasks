@@ -5,11 +5,11 @@ use LaravelEnso\Tasks\Http\Controllers\Tasks\Count;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Create;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Destroy;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Edit;
-use LaravelEnso\Tasks\Http\Controllers\Tasks\Show;
-use LaravelEnso\Tasks\Http\Controllers\Tasks\Options;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\ExportExcel;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Index;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\InitTable;
+use LaravelEnso\Tasks\Http\Controllers\Tasks\Options;
+use LaravelEnso\Tasks\Http\Controllers\Tasks\Show;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Store;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\TableData;
 use LaravelEnso\Tasks\Http\Controllers\Tasks\Update;
@@ -34,4 +34,3 @@ Route::get('users', Users::class)->name('users');
 
 Route::get('options', Options::class)->name('options');
 Route::get('{task}', Show::class)->name('show');
-

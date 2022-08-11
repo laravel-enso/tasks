@@ -22,6 +22,4 @@ class ChecklistItem
     {
         $checklist->task->updateStatus();
     }
-
-
 }

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
@@ -16,7 +15,6 @@ return new class extends Migration
 
             $table->tinyInteger('flag')->nullable()->index();
 
-            $table->boolean('completed')->index();
             $table->dateTime('reminder')->nullable();
             $table->tinyInteger('status');
             $table->dateTime('from')->nullable();

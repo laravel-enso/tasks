@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Create;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Destroy;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Edit;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Options;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Store;
 use LaravelEnso\Tasks\Http\Controllers\ChecklistItems\Update;
-use Illuminate\Support\Facades\Route;
 
 Route::prefix('checklistItems')
     ->as('checklistItems.')

@@ -2,10 +2,10 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\ChecklistItems;
 
+use function __;
+use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Http\Requests\ValidateChecklistItem;
 use LaravelEnso\Tasks\Models\ChecklistItem;
-use Illuminate\Routing\Controller;
-use function __;
 
 class Update extends Controller
 {
