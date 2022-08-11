@@ -10,6 +10,6 @@ class ValidateCommentFetch extends FormRequest
     {
         return [
             'task_id' => "required",
-            ];
+        ];
     }
 }

@@ -12,7 +12,7 @@ class ValidateChecklistItem extends FormRequest
         return [
             'name'         => ['required', 'string', $this->unique('name'), 'max:255'],
             'task_id'      => ['required', 'exists:tasks,id'],
-            'is_completed' => 'required|boolean'
+            'is_completed' => 'required|boolean',
         ];
     }
 

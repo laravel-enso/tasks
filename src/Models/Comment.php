@@ -18,5 +18,4 @@ class Comment extends Model
     protected $guarded = ['id'];
 
     protected $table = 'task_comments';
-
 }

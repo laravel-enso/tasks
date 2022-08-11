@@ -2,10 +2,10 @@
 
 namespace LaravelEnso\Tasks\Http\Controllers\Tasks;
 
-use LaravelEnso\Tasks\Models\Task;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tasks\Http\Resources\Task as Resource;
+use LaravelEnso\Tasks\Models\Task;
 
 class Show extends Controller
 {

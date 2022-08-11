@@ -15,7 +15,7 @@ class ValidateComment extends FormRequest
             'task_id' => "{$this->requiredOrFilled()}|exists:tasks,id",
             'body' => "{$this->requiredOrFilled()}|required",
             'path' => "{$this->requiredOrFilled()}",
-            ];
+        ];
     }
 
     private function requiredOrFilled()

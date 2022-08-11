@@ -7,7 +7,7 @@ use LaravelEnso\Tables\Traits\TableCache;
 
 class ChecklistItem extends Model
 {
-	use TableCache;
+    use TableCache;
 
     protected $table = 'task_checklist_items';
 

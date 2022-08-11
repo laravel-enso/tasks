@@ -13,9 +13,9 @@ class Statuses extends Enum
     public static function data(): array
     {
         return [
-            self::New => 'New',
+            self::New        => 'New',
             self::InProgress => 'In Progress',
-            self::Finished => 'Finished'
+            self::Finished   => 'Finished',
         ];
     }
 }

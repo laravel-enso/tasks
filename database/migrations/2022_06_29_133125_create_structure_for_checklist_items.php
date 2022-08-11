@@ -11,7 +11,6 @@ class CreateStructureForChecklistItems extends Migration
         ['name' => 'tasks.checklistItems.update', 'description' => 'Update task checklist item', 'is_default' => false],
         ['name' => 'tasks.checklistItems.destroy', 'description' => 'Delete task checklist item', 'is_default' => false],
 
-
         ['name' => 'tasks.checklistItems.options', 'description' => 'Get task checklist item options for select', 'is_default' => false],
     ];
 
@@ -19,4 +18,3 @@ class CreateStructureForChecklistItems extends Migration
 
     protected ?string $parentMenu = null;
 }
-
