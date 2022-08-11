@@ -74,7 +74,7 @@ class Task extends Model
         $completedItems = $this->checklistItems()->completed()->count();
         $totalItems = $this->checklistItems()->count();
 
-        $status = match($completedItems) {
+        $status = match ($completedItems) {
             $totalItems     => Statuses::Finished,
             0               => Statuses::New,
             default         => Statuses::InProgress,

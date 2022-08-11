@@ -4,7 +4,6 @@ namespace LaravelEnso\Tasks\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
-use LaravelEnso\Tasks\Http\Resources\ChecklistItem;
 
 class Task extends JsonResource
 {
