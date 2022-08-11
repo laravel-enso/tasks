@@ -98,12 +98,12 @@ class Task extends Model
 
     public function updateStatus()
     {
-        $completedChecklist = $this->checklistItems()->completed()->count();
+        $completedItems = $this->checklistItems()->completed()->count();
 
-        $count = $this->checklistItems()->count();
+        $totalItems = $this->checklistItems()->count();
 
-        $status = match ($completedChecklist) {
-            $count  => Statuses::Finished,
+        $status = match ($completedItems) {
+            $totalItems  => Statuses::Finished,
             0       => Statuses::New,
             default => Statuses::InProgress,
         };
