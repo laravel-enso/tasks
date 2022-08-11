@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
@@ -15,10 +14,11 @@ return new class extends Migration
             $table->text('description');
 
             $table->tinyInteger('flag')->nullable()->index();
-
-            $table->boolean('completed')->index();
-
             $table->dateTime('reminder')->nullable();
+            $table->smallInteger('status')->nullable();
+            $table->dateTime('from')->nullable();
+            $table->dateTime('to')->nullable();
+            $table->boolean('muted')->default(false);
 
             $table->unsignedInteger('allocated_to')->nullable()->index();
             $table->foreign('allocated_to')->references('id')->on('users');

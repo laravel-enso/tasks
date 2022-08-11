@@ -22,11 +22,21 @@
                         "type": "input",
                         "content": "text"
                     }
+                },
+                {
+                    "label": "Status",
+                    "name": "status",
+                    "value": null,
+                    "meta": {
+                        "type": "select",
+                        "options": "LaravelEnso\\Tasks\\Enums\\Statuses",
+                        "placeholder": "Choose Task Status"
+                    }
                 }
             ]
         },
         {
-            "columns": 3,
+            "columns": 2,
             "fields": [
                 {
                     "label": "Allocated To",
@@ -48,10 +58,43 @@
                         "format": "Y-m-d H:i:s",
                         "time": true
                     }
+                }
+            ]
+        },
+        {
+            "columns": 2,
+            "fields": [
+                {
+                    "label": "From",
+                    "name": "from",
+                    "value": "",
+                    "meta": {
+                        "type": "datepicker",
+                        "altFormat": "m-d-Y H:i",
+                        "format": "Y-m-d H:i:s",
+                        "time": true
+                    }
                 },
                 {
-                    "label": "Completed",
-                    "name": "completed",
+                    "label": "To",
+                    "name": "to",
+                    "value": "",
+                    "meta": {
+                        "type": "datepicker",
+                        "altFormat": "m-d-Y H:i",
+                        "format": "Y-m-d H:i:s",
+                        "time": true
+                    }
+                }
+            ]
+        },
+        {
+            "columns": "custom",
+            "fields": [
+                {
+                    "column": 3,
+                    "label": "Muted",
+                    "name": "muted",
                     "value": false,
                     "meta": {
                         "type": "input",

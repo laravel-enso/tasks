@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Tables\Traits\TableCache;
+use LaravelEnso\Tasks\Enums\Statuses;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
@@ -22,9 +23,9 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['reminder', 'reminded_at'];
+    protected $dates = ['reminder', 'reminded_at', 'from', 'to'];
 
-    protected $casts = ['completed' => 'boolean'];
+    protected $casts = ['muted' => 'boolean'];
 
     public function allocatedTo(): Relation
     {
@@ -54,12 +55,32 @@ class Task extends Model
 
     public function scopePending($query)
     {
-        return $query->whereCompleted(false);
+        return $query->whereStatus(Statuses::InProgress);
     }
 
     public function scopeCompleted($query)
     {
-        return $query->whereCompleted(true);
+        return $query->whereStatus(Statuses::Finished);
+    }
+
+    public function overdue(): bool
+    {
+        return $this->status !== Statuses::Finished
+            && $this->reminder?->lessThan(Carbon::now());
+    }
+
+    public function updateStatus(): void
+    {
+        $completedItems = $this->checklistItems()->completed()->count();
+        $totalItems = $this->checklistItems()->count();
+
+        $status = match ($completedItems) {
+            $totalItems     => Statuses::Finished,
+            0               => Statuses::New,
+            default         => Statuses::InProgress,
+        };
+
+        $this->update(['status' => $status]);
     }
 
     public function setReminderAttribute($dateTime)
@@ -77,11 +98,5 @@ class Task extends Model
             ->onQueue('notifications'));
 
         $this->update(['reminded_at' => Carbon::now()]);
-    }
-
-    public function overdue(): bool
-    {
-        return !$this->completed
-            && $this->reminder?->lessThan(Carbon::now());
     }
 }

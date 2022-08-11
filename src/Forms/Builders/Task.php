@@ -4,6 +4,7 @@ namespace LaravelEnso\Tasks\Forms\Builders;
 
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Forms\Services\Form;
+use LaravelEnso\Tasks\Enums\Statuses;
 use LaravelEnso\Tasks\Models\Task as Model;
 
 class Task
@@ -21,8 +22,9 @@ class Task
 
     public function create()
     {
-        return $this->form->hide('completed')
+        return $this->form->hide('status')
             ->value('allocated_to', Auth::id())
+            ->value('status', Statuses::New)
             ->create();
     }
 
