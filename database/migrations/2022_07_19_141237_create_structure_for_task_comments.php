@@ -2,7 +2,8 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-return new class extends Migration {
+return new class extends Migration
+{
     protected array $permissions = [
         ['name' => 'tasks.comments.index', 'description' => 'List task comments for commentable', 'is_default' => true],
         ['name' => 'tasks.comments.store', 'description' => 'Create task comment', 'is_default' => true],
