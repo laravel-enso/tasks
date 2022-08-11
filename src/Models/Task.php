@@ -104,8 +104,8 @@ class Task extends Model
 
         $status = match ($completedItems) {
             $totalItems  => Statuses::Finished,
-            0       => Statuses::New,
-            default => Statuses::InProgress,
+            0            => Statuses::New,
+            default      => Statuses::InProgress,
         };
 
         $this->update(['status' => $status]);
