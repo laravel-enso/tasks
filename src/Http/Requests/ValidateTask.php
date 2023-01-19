@@ -4,7 +4,8 @@ namespace LaravelEnso\Tasks\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
-use LaravelEnso\Tasks\Enums\Flags;
+use Illuminate\Validation\Rules\Enum;
+use LaravelEnso\Tasks\Enums\Flag;
 use LaravelEnso\Tasks\Models\Task;
 
 class ValidateTask extends FormRequest
@@ -17,16 +18,16 @@ class ValidateTask extends FormRequest
     public function rules()
     {
         return [
-            'name'         => "{$this->requiredOrFilled()}|string",
-            'description'  => 'filled',
-            'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
-            'reminder'     => 'nullable|date',
+            'name' => "{$this->requiredOrFilled()}|string",
+            'description' => 'filled',
+            'flag' => ['nullable', new Enum(Flag::class)],
+            'reminder' => 'nullable|date',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
-            'completed'    => "{$this->requiredOrFilled()}|boolean",
+            'completed' => "{$this->requiredOrFilled()}|boolean",
         ];
     }
 
-    public function withValidator($validator)
+    public function withValidator($validator): void
     {
         if ($this->filled('reminder')) {
             $validator->after(fn ($validator) => $this
@@ -34,14 +35,14 @@ class ValidateTask extends FormRequest
         }
     }
 
-    private function requiredOrFilled()
+    private function requiredOrFilled(): string
     {
         return $this->method() === 'POST'
             ? 'required'
             : 'filled';
     }
 
-    private function validateReminder($validator)
+    private function validateReminder($validator): void
     {
         if ($this->invalidReminder()) {
             $validator->errors()
@@ -56,10 +57,9 @@ class ValidateTask extends FormRequest
 
     private function invalidReminder(): bool
     {
-        $changed = !$this->task()?->reminder
+        $changed = ! $this->task()?->reminder
             || $this->task()->reminder->notEqualTo($this->get('reminder'));
 
-        return $changed
-            && Carbon::now()->greaterThan($this->get('reminder'));
+        return $changed && Carbon::now()->greaterThan($this->get('reminder'));
     }
 }

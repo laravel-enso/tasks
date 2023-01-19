@@ -3,6 +3,7 @@
 namespace LaravelEnso\Tasks\Contracts;
 
 use Carbon\Carbon;
+use LaravelEnso\Tasks\Enums\Flag;
 use LaravelEnso\Users\Models\User;
 
 interface Taskable
@@ -19,7 +20,7 @@ interface Taskable
 
     public function reminder(): Carbon;
 
-    public function flag(): ?int;
+    public function flag(): ?Flag;
 
     public function completed(): bool;
 }

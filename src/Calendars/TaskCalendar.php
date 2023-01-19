@@ -5,7 +5,7 @@ namespace LaravelEnso\Tasks\Calendars;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use LaravelEnso\Calendar\Contracts\CustomCalendar;
-use LaravelEnso\Calendar\Enums\Colors;
+use LaravelEnso\Calendar\Enums\Color;
 use LaravelEnso\Tasks\Models\Task;
 
 class TaskCalendar implements CustomCalendar
@@ -20,9 +20,9 @@ class TaskCalendar implements CustomCalendar
         return 'Tasks';
     }
 
-    public function color(): string
+    public function color(): Color
     {
-        return Colors::Red;
+        return Color::Red;
     }
 
     public function private(): bool

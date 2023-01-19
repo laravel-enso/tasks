@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Tables\Traits\TableCache;
+use LaravelEnso\Tasks\Enums\Flag;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
@@ -24,7 +25,10 @@ class Task extends Model
 
     protected $dates = ['reminder', 'reminded_at'];
 
-    protected $casts = ['completed' => 'boolean'];
+    protected $casts = [
+        'completed' => 'boolean',
+        'flag' => Flag::class,
+    ];
 
     public function allocatedTo(): Relation
     {
@@ -47,7 +51,7 @@ class Task extends Model
         $user = Auth::user();
         $superiorUser = $user->isAdmin() || $user->isSupervisor();
 
-        return $query->when(!$superiorUser, fn ($query) => $query
+        return $query->when(! $superiorUser, fn ($query) => $query
             ->where(fn ($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
@@ -81,7 +85,7 @@ class Task extends Model
 
     public function overdue(): bool
     {
-        return !$this->completed
+        return ! $this->completed
             && $this->reminder?->lessThan(Carbon::now());
     }
 }
