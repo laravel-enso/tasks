@@ -21,6 +21,6 @@ class Tasks implements Relation
 
     public function closure(): Closure
     {
-        return fn ($model) => $model->hasMany(Task::class, 'allocated_to');
+        return fn (User $model) => $model->hasMany(Task::class, 'allocated_to');
     }
 }
