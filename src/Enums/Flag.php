@@ -3,11 +3,11 @@
 namespace LaravelEnso\Tasks\Enums;
 
 use LaravelEnso\Enums\Contracts\Frontend;
-use LaravelEnso\Enums\Traits\Enum;
+use LaravelEnso\Enums\Traits\Random;
 
 enum Flag: int implements Frontend
 {
-    use Enum;
+    use Random;
 
     public const Danger = 1;
     public const Warning = 2;
