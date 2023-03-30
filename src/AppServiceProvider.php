@@ -7,7 +7,9 @@ use Illuminate\Support\ServiceProvider;
 use LaravelEnso\DynamicMethods\Services\Methods;
 use LaravelEnso\Tasks\Commands\SendTaskReminders;
 use LaravelEnso\Tasks\DynamicRelations\Tasks;
+use LaravelEnso\Tasks\Models\ChecklistItem;
 use LaravelEnso\Tasks\Models\Task as Model;
+use LaravelEnso\Tasks\Observers\ChecklistItem as ChecklistItemObserver;
 use LaravelEnso\Tasks\Observers\Task as Observer;
 use LaravelEnso\Users\Models\User;
 
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
             ->command()
             ->relations()
             ->observers();
+        ChecklistItem::observe(ChecklistItemObserver::class);
     }
 
     private function load(): self
