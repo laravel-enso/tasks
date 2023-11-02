@@ -45,9 +45,8 @@ class Task extends Model
     public function scopeVisible($query)
     {
         $user = Auth::user();
-        $superiorUser = $user->isAdmin() || $user->isSupervisor();
 
-        return $query->when(!$superiorUser, fn ($query) => $query
+        return $query->when(! $user->isSuperior(), fn ($query) => $query
             ->where(fn ($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
@@ -81,7 +80,7 @@ class Task extends Model
 
     public function overdue(): bool
     {
-        return !$this->completed
+        return ! $this->completed
             && $this->reminder?->lessThan(Carbon::now());
     }
 }

@@ -12,9 +12,7 @@ class Task
 
     public function before(User $user)
     {
-        if ($user->isAdmin() || $user->isSupervisor()) {
-            return true;
-        }
+        return $user->isSuperior();
     }
 
     public function handle(User $user, Model $task)
