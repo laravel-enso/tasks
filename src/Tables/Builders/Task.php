@@ -48,7 +48,7 @@ class Task implements Table, AuthenticatesOnExport, CustomFilter, ConditionalAct
 
     public function render(array $row, string $action): bool
     {
-        $isSuperior = Auth::user()->isAdmin() || Auth::user()->isSupervisor();
+        $isSuperior = Auth::user()->isSuperior();
 
         return $isSuperior
             || $row['createdBy']['id'] === Auth::user()->id;
