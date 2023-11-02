@@ -12,7 +12,9 @@ class Task
 
     public function before(User $user)
     {
-        return $user->isSuperior();
+        if ($user->isSuperior()) {
+            return true;
+        }
     }
 
     public function handle(User $user, Model $task)
