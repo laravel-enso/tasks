@@ -5,9 +5,16 @@ namespace LaravelEnso\Tasks\DynamicRelations;
 use Closure;
 use LaravelEnso\DynamicMethods\Contracts\Method;
 use LaravelEnso\Tasks\Models\Task;
+use LaravelEnso\Users\Models\User;
+
 
 class Tasks implements Method
 {
+    public function bindTo(): array
+    {
+        return [User::class];
+    }
+
     public function name(): string
     {
         return 'tasks';
@@ -15,6 +22,6 @@ class Tasks implements Method
 
     public function closure(): Closure
     {
-        return fn () => $this->hasMany(Task::class, 'allocated_to');
+        return fn (User $user) => $user->hasMany(Task::class, 'allocated_to');
     }
 }

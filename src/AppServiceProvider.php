@@ -4,12 +4,9 @@ namespace LaravelEnso\Tasks;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
-use LaravelEnso\DynamicMethods\Services\Methods;
 use LaravelEnso\Tasks\Commands\SendTaskReminders;
-use LaravelEnso\Tasks\DynamicRelations\Tasks;
 use LaravelEnso\Tasks\Models\Task as Model;
 use LaravelEnso\Tasks\Observers\Task as Observer;
-use LaravelEnso\Users\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
         $this->load()
             ->publish()
             ->command()
-            ->relations()
             ->observers();
     }
 
@@ -52,13 +48,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->booted(fn () => $this->app->make(Schedule::class)
             ->command('enso:tasks:send-reminders')->everyMinute());
-
-        return $this;
-    }
-
-    private function relations(): self
-    {
-        Methods::bind(User::class, [Tasks::class]);
 
         return $this;
     }
