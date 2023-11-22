@@ -7,7 +7,6 @@ use LaravelEnso\DynamicMethods\Contracts\Method;
 use LaravelEnso\Tasks\Models\Task;
 use LaravelEnso\Users\Models\User;
 
-
 class Tasks implements Method
 {
     public function bindTo(): array
