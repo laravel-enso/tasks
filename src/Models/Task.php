@@ -46,7 +46,7 @@ class Task extends Model
     {
         $user = Auth::user();
 
-        return $query->when(! $user->isSuperior(), fn ($query) => $query
+        return $query->when(!$user->isSuperior(), fn ($query) => $query
             ->where(fn ($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
@@ -80,7 +80,7 @@ class Task extends Model
 
     public function overdue(): bool
     {
-        return ! $this->completed
+        return !$this->completed
             && $this->reminder?->lessThan(Carbon::now());
     }
 }

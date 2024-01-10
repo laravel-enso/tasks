@@ -19,7 +19,7 @@ class ValidateTask extends FormRequest
         return [
             'name'         => "{$this->requiredOrFilled()}|string|max:256",
             'description'  => 'filled|max:4096',
-            'flag'         => 'nullable|in:' . Flags::keys()->implode(','),
+            'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
             'reminder'     => 'nullable|date',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
             'completed'    => "{$this->requiredOrFilled()}|boolean",
