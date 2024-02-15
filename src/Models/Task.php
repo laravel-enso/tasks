@@ -24,8 +24,8 @@ class Task extends Model
 
     protected $casts = [
         'completed' => 'boolean',
-        'reminder' => 'date',
-        'reminded_at' => 'date',
+        'reminder' => 'datetime',
+        'reminded_at' => 'datetime',
     ];
 
     public function allocatedTo(): Relation
