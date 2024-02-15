@@ -22,9 +22,11 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['reminder', 'reminded_at'];
-
-    protected $casts = ['completed' => 'boolean'];
+    protected $casts = [
+        'completed' => 'boolean',
+        'reminder' => 'date',
+        'reminded_at' => 'date',
+    ];
 
     public function allocatedTo(): Relation
     {
