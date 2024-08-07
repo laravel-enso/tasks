@@ -22,12 +22,6 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'completed' => 'boolean',
-        'reminder' => 'datetime',
-        'reminded_at' => 'datetime',
-    ];
-
     public function allocatedTo(): Relation
     {
         return $this->belongsTo(User::class, 'allocated_to');
@@ -84,5 +78,14 @@ class Task extends Model
     {
         return !$this->completed
             && $this->reminder?->lessThan(Carbon::now());
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'completed' => 'boolean',
+            'reminder' => 'datetime',
+            'reminded_at' => 'datetime',
+        ];
     }
 }
