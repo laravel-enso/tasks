@@ -19,11 +19,11 @@ return new class() extends Migration {
 
             $table->dateTime('reminder')->nullable();
 
-            $table->unsignedInteger('allocated_to')->nullable()->index();
+            $table->integer('allocated_to')->unsigned()->nullable()->index();
             $table->foreign('allocated_to')->references('id')->on('users');
-            $table->unsignedInteger('created_by')->nullable()->index();
+            $table->integer('created_by')->unsigned()->nullable()->index();
             $table->foreign('created_by')->references('id')->on('users');
-            $table->unsignedInteger('updated_by')->nullable()->index();
+            $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->foreign('updated_by')->references('id')->on('users');
 
             $table->dateTime('reminded_at')->nullable()->index();
