@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
+use LaravelEnso\DynamicMethods\Contracts\DynamicMethods;
+use LaravelEnso\DynamicMethods\Traits\Abilities;
 use LaravelEnso\Tables\Traits\TableCache;
 use LaravelEnso\Tasks\Notifications\TaskNotification;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 use LaravelEnso\TrackWho\Traits\UpdatedBy;
 use LaravelEnso\Users\Models\User;
 
-class Task extends Model
+class Task extends Model implements DynamicMethods
 {
+    use Abilities;
     use TableCache;
     use HasFactory;
     use CreatedBy;
