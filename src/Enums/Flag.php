@@ -2,7 +2,6 @@
 
 namespace LaravelEnso\Tasks\Enums;
 
-
 enum Flag: int
 {
     case Danger = 1;
