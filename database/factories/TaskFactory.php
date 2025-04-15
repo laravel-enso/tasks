@@ -21,7 +21,7 @@ class TaskFactory extends Factory
             'name'         => $this->faker->name,
             'description'  => $this->faker->text,
             'flag'         => $this->faker->boolean
-                ? Flag::cases()[array_rand(Flag::cases())]->value
+                ? Flag::random()->value
                 : null,
             'completed'    => $this->faker->boolean,
             'reminder'     => $reminder,
