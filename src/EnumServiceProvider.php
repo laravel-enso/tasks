@@ -3,11 +3,11 @@
 namespace LaravelEnso\Tasks;
 
 use LaravelEnso\Enums\EnumServiceProvider as ServiceProvider;
-use LaravelEnso\Tasks\Enums\Flags;
+use LaravelEnso\Tasks\Enums\Flag;
 
 class EnumServiceProvider extends ServiceProvider
 {
     public $register = [
-        'flags' => Flags::class,
+        'flag' => Flag::class,
     ];
 }

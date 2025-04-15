@@ -4,7 +4,9 @@ namespace LaravelEnso\Tasks\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
-use LaravelEnso\Tasks\Enums\Flags;
+use Illuminate\Validation\Rule;
+use LaravelEnso\Tasks\Enums\Flag;
+
 use LaravelEnso\Tasks\Models\Task;
 
 class ValidateTask extends FormRequest
@@ -19,7 +21,7 @@ class ValidateTask extends FormRequest
         return [
             'name'         => "{$this->requiredOrFilled()}|string|max:256",
             'description'  => 'filled|max:4096',
-            'flag'         => 'nullable|in:'.Flags::keys()->implode(','),
+            'flag' => ['nullable', Rule::in(array_column(Flag::cases(), 'value'))],
             'reminder'     => 'nullable|date',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
             'completed'    => "{$this->requiredOrFilled()}|boolean",
