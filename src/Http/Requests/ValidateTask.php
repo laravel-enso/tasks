@@ -21,7 +21,7 @@ class ValidateTask extends FormRequest
         return [
             'name'         => "{$this->requiredOrFilled()}|string|max:256",
             'description'  => 'filled|max:4096',
-            'flag' => ['nullable', Rule::in(array_column(Flag::cases(), 'value'))],
+            'flag'          => ['nullable', Rule::in(array_column(Flag::cases(), 'value'))],
             'reminder'     => 'nullable|date',
             'allocated_to' => "{$this->requiredOrFilled()}|exists:users,id",
             'completed'    => "{$this->requiredOrFilled()}|boolean",
