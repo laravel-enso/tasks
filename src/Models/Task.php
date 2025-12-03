@@ -45,7 +45,7 @@ class Task extends Model implements DynamicMethods
     {
         $user = Auth::user();
 
-        return $query->when(!$user->isSuperior(), fn ($query) => $query
+        return $query->when(! $user->isSuperior(), fn ($query) => $query
             ->where(fn ($query) => $query->whereCreatedBy($user->id)
                 ->orWhere('allocated_to', $user->id)));
     }
@@ -62,7 +62,7 @@ class Task extends Model implements DynamicMethods
 
     public function setReminderAttribute($dateTime)
     {
-        if (Carbon::now()->lessThan($dateTime)) {
+        if ($dateTime && Carbon::now()->lessThan($dateTime)) {
             $this->reminded_at = null;
         }
 
@@ -79,7 +79,7 @@ class Task extends Model implements DynamicMethods
 
     public function overdue(): bool
     {
-        return !$this->completed
+        return ! $this->completed
             && $this->reminder?->lessThan(Carbon::now());
     }
 
