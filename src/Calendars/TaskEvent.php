@@ -7,7 +7,7 @@ use LaravelEnso\Calendar\Contracts\Calendar;
 use LaravelEnso\Calendar\Contracts\ProvidesEvent;
 use LaravelEnso\Calendar\Contracts\Routable;
 use LaravelEnso\Calendar\DTOs\Route;
-use LaravelEnso\Calendar\Enums\Frequencies;
+use LaravelEnso\Calendar\Enums\Frequency;
 use LaravelEnso\Tasks\Models\Task;
 
 class TaskEvent implements ProvidesEvent, Routable
@@ -53,7 +53,7 @@ class TaskEvent implements ProvidesEvent, Routable
 
     public function frequency(): int
     {
-        return Frequencies::Once;
+        return Frequency::Once->value;
     }
 
     public function recurrenceEnds(): ?Carbon

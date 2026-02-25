@@ -25,7 +25,7 @@
             "sortable",
             "slot"
         ],
-        "enum": "LaravelEnso\\Tasks\\Enums\\Flags"
+        "enum": "LaravelEnso\\Tasks\\Enums\\Flag"
     }, {
         "label": "Reminder",
         "name": "reminder",
