@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/tasks",
-    "description": "Task management dependency for Laravel Enso",
+    "description": "Task management backend for Laravel Enso",
     "keywords": [
         "laravel-enso",
         "tasks",
