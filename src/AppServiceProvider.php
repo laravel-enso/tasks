@@ -22,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-enso/tasks');
+
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->mergeConfigFrom(__DIR__.'/../config/tasks.php', 'enso.tasks');

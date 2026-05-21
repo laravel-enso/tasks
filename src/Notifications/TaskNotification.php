@@ -37,11 +37,11 @@ class TaskNotification extends Notification implements ShouldQueue
 
         return (new MailMessage())
             ->subject("[ {$app} ] {$this->subject()}")
-            ->line(__('This is a reminder for the following task:'))
-            ->line(__(':name: :description', [
-                'name'        => $this->task->name,
+            ->markdown('laravel-enso/tasks::emails.task-reminder', [
+                'name' => $this->task->name,
                 'description' => $this->task->description,
-            ]))->action(__('View Task'), "/tasks/{$this->task->id}/edit");
+                'url' => "/tasks/{$this->task->id}/edit",
+            ]);
     }
 
     public function toArray()

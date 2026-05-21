@@ -28,6 +28,7 @@
         "laravel-enso/dynamic-methods": "^4.0",
         "laravel-enso/forms": "^5.0",
         "laravel-enso/helpers": "^4.0",
+        "laravel-enso/mails": "^1.0",
         "laravel-enso/tables": "^5.0"
     },
     "autoload": {
@@ -42,6 +43,7 @@
                 "LaravelEnso\\Tasks\\AppServiceProvider",
                 "LaravelEnso\\Tasks\\AuthServiceProvider",
                 "LaravelEnso\\Tasks\\BroadcastServiceProvider",
+                "LaravelEnso\\Tasks\\MailServiceProvider",
                 "LaravelEnso\\Tasks\\WebsocketServiceProvider",
                 "LaravelEnso\\Tasks\\EnumServiceProvider"
             ]

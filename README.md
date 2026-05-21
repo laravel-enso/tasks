@@ -34,7 +34,7 @@ The package merges `config/tasks.php`, where you can restrict the roles that may
 - CRUD endpoints for tasks, plus table bootstrap, table data, and Excel export.
 - Visibility rules based on ownership, assignee, and superior roles.
 - Reminder and overdue scopes on the `Task` model.
-- Queued reminder notifications through `TaskNotification`.
+- Queued reminder notifications through `TaskNotification`, rendered with shared `laravel-enso/mails` layouts and package-owned previews.
 - Broadcast channels for per-user task streams and global task updates.
 - Dynamic taskable payload generation through `TaskableFactory`.
 
@@ -104,6 +104,7 @@ Required Enso packages:
 - [`laravel-enso/dynamic-methods`](https://docs.laravel-enso.com/backend/dynamic-methods.html) [↗](https://github.com/laravel-enso/dynamic-methods)
 - [`laravel-enso/forms`](https://docs.laravel-enso.com/backend/forms.html) [↗](https://github.com/laravel-enso/forms)
 - [`laravel-enso/helpers`](https://docs.laravel-enso.com/backend/helpers.html) [↗](https://github.com/laravel-enso/helpers)
+- [`laravel-enso/mails`](https://github.com/laravel-enso/mails)
 - [`laravel-enso/tables`](https://docs.laravel-enso.com/backend/tables.html) [↗](https://github.com/laravel-enso/tables)
 
 Companion frontend package:
